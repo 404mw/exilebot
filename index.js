@@ -116,8 +116,13 @@ const client = new Client({
     client.on('messageCreate', (message) => {
         
         if (message.author.bot) return; // Ignoring messages from the bot
+        else if (message.author.username === `neky96` && message.content.startsWith(`!se`))
+          return (
+            message.reply(`only works for true exile members`),
+            message.channel.send(`<:poorneky:1326196181579333714>`)
+          )
       
-        if (message.content.startsWith('!se')) { // triggeres the command at !se
+        else if (message.content.startsWith('!se')) { // triggeres the command at !se
           const args = message.content.split(' '); // splitting with spaces
       
           if (args.length !== 3) { // Ensuring there are exactly three parts: command, input1, input2
@@ -142,6 +147,9 @@ const client = new Client({
           if (input2 > 100) {
             return message.reply(`> **100% is always max fuckface**`);
           }
+          if (input2 < 1) {
+            return message.reply(`> hunh!!! really??`)
+          }
       
           const predefinedValue = sehpValues[input1];
       
@@ -155,7 +163,44 @@ const client = new Client({
           message.reply(`> **x${input1}** <:hp:1325816948889747456>\n > __${exponentialResult}__ remaining`);
         }
 
+        else if (message.content.startsWith(`!kongen`)) {
+          return message.reply(`https://tenor.com/view/kim-jong-un-gif-6119244402377892028`)
+        }
+        else if (message.content.startsWith(`!adrian`)) {
+          return message.reply(`https://tenor.com/view/mckinley-whale-big-gif-3873017581534036627`)
+        }
+        else if (message.content.startsWith(`!peitho`)) {
+          return message.reply(`https://tenor.com/view/uncle-roger-weak-gif-19541923`)
+        }
+        else if (message.content.startsWith(`!blank`)) {
+          return message.reply(`https://tenor.com/view/these-heaux-black-gif-12671781`)
+        }
+        else if (message.content.startsWith(`!patar`)) {
+          return message.reply(`https://tenor.com/view/yahia-potato-dance-gif-16070760`)
+        }
+
+        else if (message.mentions.has(client.user)) {
+          message.react(`<:ping:1326194149808144425>`)
+        }
+
         
+      });
+
+    client.on('interactionCreate', (interaction) => {
+        if (!interaction.isCommand()) return;
+
+        if (interaction.commandName === 'help') {
+          const embed = new EmbedBuilder()
+            .setColor(0x0099ff) // Set a color for the embed
+            .setTitle('Bot Help')
+            .setDescription('Here’s how to use the bot:')
+            .addFields(
+              { name: '/help', value: 'Show this help message.' },
+            )
+            .setFooter({ text: 'Thank you for using the bot!', iconURL: client.user.displayAvatarURL() });
+      
+          return interaction.reply({ embeds: [embed] });
+        }
       });
       
 
