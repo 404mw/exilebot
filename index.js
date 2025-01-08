@@ -178,6 +178,17 @@ const client = new Client({
         else if (message.content.toLowerCase().startsWith(`!patar`)) {
           return message.reply(`https://tenor.com/view/yahia-potato-dance-gif-16070760`)
         }
+        else if (message.content.toLowerCase().startsWith(`!fold`)) {
+          const fold = [
+            "https://tenor.com/view/samsung-samsung-galaxy-samsung-galaxy-z-samsung-galaxy-z-fold-samsung-galaxy-z-fold-6-gif-17233388516951825573",
+            "https://tenor.com/view/samsung-samsung-galaxy-samsung-galaxy-z-samsung-galaxy-z-fold-samsung-galaxy-z-fold-5-gif-8796314290296609501",
+            "https://tenor.com/view/samsung-samsung-galaxy-samsung-galaxy-z-samsung-galaxy-z-fold-samsung-galaxy-z-fold3-gif-22713805",
+            "https://tenor.com/view/samsung-samsung-galaxy-samsung-galaxy-z-samsung-galaxy-z-fold-samsung-galaxy-z-fold-6-gif-16899636265295383040",
+            "https://tenor.com/view/samsung-samsung-galaxy-samsung-galaxy-z-samsung-galaxy-z-fold-samsung-galaxy-z-fold4-gif-26471633"]
+            
+            const result = Math.floor(Math.random() * fold.length)
+          return message.reply(fold[result])
+        }
         else if (message.content.toLowerCase().startsWith(`!mapi`)) {
           const mapi = [
             "https://tenor.com/view/johnny-bravo-muscles-pec-bounce-pecs-biceps-gif-17958622974887416284",
@@ -203,6 +214,36 @@ const client = new Client({
         else if (message.content.toLowerCase().startsWith(`!daddy`)) {
           return message.reply(`https://tenor.com/view/obese-boy-obesity-overhang-fat-belly-fat-guy-gif-9772974852016550463`)
         }
+        else if (message.content.toLowerCase().startsWith(`!classic`)) {
+          return message.reply(`https://tenor.com/view/crazy-cat-lady-agnes-loonstra-illustration-cat-cat-mom-gif-13715924`)
+        }
+        else if (message.content.toLowerCase().startsWith(`!dab`)) {
+          return message.reply(`https://tenor.com/view/habibi-dubai-arabmoney-habibimoney-rrc-gif-26503509`)
+        }
+        else if (message.content.toLowerCase().startsWith(`!james`)) {
+          return message.reply(`https://tenor.com/view/racist-point-smile-gif-16693098`)
+        }
+        else if (message.content.toLowerCase().startsWith(`!wick`)) {
+          return message.reply(`https://tenor.com/view/disney-gif-9635069`)
+        }
+        else if (message.content.toLowerCase().startsWith('!ping')) {
+          const sentTime = Date.now(); // Capture the timestamp when the bot processes the command
+        
+          message.reply('Pong! 🏓')
+            .then((replyMessage) => {
+              const responseTime = Date.now() - sentTime; // Calculate response time
+              const websocketPing = Math.round(client.ws.ping); // Get WebSocket ping
+        
+              // Format response time to one decimal place
+              const formattedResponseTime = (responseTime / 100).toFixed();
+        
+              replyMessage.edit(`Pong! 🏓 \n **${formattedResponseTime}s**`);
+            })
+        }
+        
+        
+        
+        
 
         else if (message.mentions.has(client.user)) {
           message.react(`<:ping:1326194149808144425>`)
