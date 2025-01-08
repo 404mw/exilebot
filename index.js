@@ -116,13 +116,13 @@ const client = new Client({
     client.on('messageCreate', (message) => {
         
         if (message.author.bot) return; // Ignoring messages from the bot
-        else if (message.author.username === `neky96` && message.content.startsWith(`!se`))
+        else if (message.author.username === `neky96` && message.content.toLowerCase().startsWith(`!se`))
           return (
             message.reply(`only works for true exile members`),
             message.channel.send(`<:poorneky:1326196181579333714>`)
           )
       
-        else if (message.content.startsWith('!se')) { // triggeres the command at !se
+        else if (message.content.toLowerCase().startsWith('!se')) { // triggeres the command at !se
           const args = message.content.split(' '); // splitting with spaces
       
           if (args.length !== 3) { // Ensuring there are exactly three parts: command, input1, input2
@@ -163,20 +163,45 @@ const client = new Client({
           message.reply(`> **x${input1}** <:hp:1325816948889747456>\n > __${exponentialResult}__ remaining`);
         }
 
-        else if (message.content.startsWith(`!kongen`)) {
+        else if (message.content.toLowerCase().startsWith(`!kongen`)) {
           return message.reply(`https://tenor.com/view/kim-jong-un-gif-6119244402377892028`)
         }
-        else if (message.content.startsWith(`!adrian`)) {
+        else if (message.content.toLowerCase().startsWith(`!adrian`)) {
           return message.reply(`https://tenor.com/view/mckinley-whale-big-gif-3873017581534036627`)
         }
-        else if (message.content.startsWith(`!peitho`)) {
+        else if (message.content.toLowerCase().startsWith(`!peitho`)) {
           return message.reply(`https://tenor.com/view/uncle-roger-weak-gif-19541923`)
         }
-        else if (message.content.startsWith(`!blank`)) {
-          return message.reply(`https://tenor.com/view/these-heaux-black-gif-12671781`)
+        else if (message.content.toLowerCase().startsWith(`!blank`)) {
+          return message.reply(`<:blank:1326590365062660187> \n <:blank:1326590365062660187> \n <:blank:1326590365062660187> \n <:blank:1326590365062660187> \n <:blank:1326590365062660187>`)
         }
-        else if (message.content.startsWith(`!patar`)) {
+        else if (message.content.toLowerCase().startsWith(`!patar`)) {
           return message.reply(`https://tenor.com/view/yahia-potato-dance-gif-16070760`)
+        }
+        else if (message.content.toLowerCase().startsWith(`!mapi`)) {
+          const mapi = [
+            "https://tenor.com/view/johnny-bravo-muscles-pec-bounce-pecs-biceps-gif-17958622974887416284",
+            "https://tenor.com/view/pec-bounce-pecs-chest-bouncing-gif-20318718",
+            "https://tenor.com/view/muscle-man-gif-20456077"]
+            
+            const result = Math.floor(Math.random() * mapi.length)
+          return message.reply(mapi[result])
+        }
+        else if (message.content.toLowerCase().startsWith(`!neky`)) {
+          const neky = [
+            "https://tenor.com/view/small-tiny-little-too-small-not-huge-gif-25307813",
+            "https://tenor.com/view/south-park-so-small-gif-14287965",
+            "https://tenor.com/view/magnifying-glass-cant-see-tiny-where-is-it-small-gif-23452184",
+            "https://tenor.com/view/search-yes-okey-magnifying-glass-gif-10889149"]
+            
+            const result = Math.floor(Math.random() * neky.length)
+          return message.reply(neky[result])
+        }
+        else if (message.content.toLowerCase().startsWith(`!jaz`)) {
+          return message.reply(`https://tenor.com/view/baby-girl-gif-19510561`)
+        }
+        else if (message.content.toLowerCase().startsWith(`!daddy`)) {
+          return message.reply(`https://tenor.com/view/obese-boy-obesity-overhang-fat-belly-fat-guy-gif-9772974852016550463`)
         }
 
         else if (message.mentions.has(client.user)) {
