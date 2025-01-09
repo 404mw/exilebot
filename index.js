@@ -103,7 +103,107 @@ const sehpValues = {
     97: 2.4153763147623E+16,
     98: 2.4011100655347E+16,
     99: 2.3259179327352E+16,
-    100: 8.7121365139560E+15,   
+    100: 8.7121365139560E+15,
+    101: 1.797938070173e+18,
+    102: 1.797938070173e+18,
+    103: 8.989690350865e+17,
+    104: 4.4948451754186e+17,
+    105: 2.2874225877093e+17,
+    106: 1.1237112938546e+17,
+    107: 5.6185564692732e+16,
+    108: 2.8092782246366e+16,
+    109: 1.4046391173183e+16,
+    110: 7023195586591500,
+    111: 4.682130391061e+28,
+    112: 3.121420260719e+28,
+    113: 2080946840479300,
+    114: 1387297893651500,
+    115: 924865262434320,
+    116: 6.16576841622886,
+    117: 411051227748590,
+    118: 274034151832390,
+    119: 182689434554790,
+    120: 121792956369860,
+    121: 101494130307770,
+    122: 84578441923138,
+    123: 70482034935948,
+    124: 58735029113290,
+    125: 48945857594340,
+    126: 40788214661950,
+    127: 33990178884972,
+    128: 28325149070810,
+    129: 23604290892410,
+    130: 19670242410410,
+    131: 16391868675410,
+    132: 13659890562830,
+    133: 12418082329846,
+    134: 11289165754405,
+    135: 10262877958550,
+    136: 9329889053190,
+    137: 8481717320970,
+    138: 7710652110010,
+    139: 7009683736410,
+    140: 6372439760410,
+    141: 5793127055030,
+    142: 5266479140750,
+    143: 5015694419840,
+    144: 4776851828380,
+    145: 4549382693541,
+    146: 4332745422420,
+    147: 4126424211914,
+    148: 3929927820870,
+    149: 3742788400584,
+    150: 3564560381509,
+    151: 3394819411040,
+    152: 3233161433750,
+    153: 3079201279840,
+    154: 2792572647330,
+    155: 2792926330810,
+    156: 2659929838730,
+    157: 2533266512920,
+    158: 2412634774190,
+    159: 2297747404010,
+    160: 2188330861030,
+    161: 2084124629639,
+    162: 1894658754330,
+    163: 1722417049540,
+    164: 1655333681400,
+    165: 1423845164760,
+    166: 1294077422360,
+    167: 1176444020970,
+    168: 1069485473140,
+    169: 972259520850,
+    170: 88387291570,
+    171: 818400269790,
+    172: 757778027720,
+    173: 701646322130,
+    174: 649672520430,
+    175: 601548630210,
+    176: 556989472280,
+    177: 515730992700,
+    178: 477528696990,
+    179: 442156200779,
+    180: 409403389520,
+    181: 379077675360,
+    182: 354278201340,
+    183: 331101122470,
+    184: 309440301630,
+    185: 289196435410,
+    186: 272826927709,
+    187: 257383893950,
+    188: 242814994180,
+    189: 231252375440,
+    190: 220430357640,
+    191: 211769754780,
+    192: 203624591040,
+    193: 199631952000,
+    194: 195717600000,
+    195: 191880000000,
+    196: 159900000000,
+    197: 123000000000,
+    198: 82000000000,
+    199: 41000000000,
+    200: 10250000000   
   };
 
 const client = new Client({
@@ -140,7 +240,7 @@ const client = new Client({
       
           // Checking if the first input exists/defined
           if (!sehpValues.hasOwnProperty(input1)) {
-            return message.reply(`> only **1-100** available for now`);
+            return message.reply(`> Sending DH a mail to add **${input1}**`);
           }
 
         // checking if the second input is written correctly
@@ -148,7 +248,10 @@ const client = new Client({
             return message.reply(`> **100% is always max fuckface**`);
           }
           if (input2 < 1) {
-            return message.reply(`> hunh!!! really??`)
+            return (
+              message.reply(`> Really?? ${input2}`),
+              message.channel.send(`<:stare:1326950087326171168>`)
+            )
           }
       
           const predefinedValue = sehpValues[input1];
@@ -160,7 +263,7 @@ const client = new Client({
           let exponentialResult = result.toExponential(13);
       
           // Sending the result back as a reply
-          message.reply(`> **x${input1}** <:hp:1325816948889747456>\n > __${exponentialResult}__ remaining`);
+          message.reply(`> **x${input1}** <:hp:1325816948889747456>\n > **${exponentialResult}** remaining`);
         }
 
         else if (message.content.toLowerCase().startsWith(`!kongen`)) {
@@ -212,16 +315,22 @@ const client = new Client({
           return message.reply(`https://tenor.com/view/baby-girl-gif-19510561`)
         }
         else if (message.content.toLowerCase().startsWith(`!daddy`)) {
-          return message.reply(`https://tenor.com/view/obese-boy-obesity-overhang-fat-belly-fat-guy-gif-9772974852016550463`)
+          return message.reply(`https://tenor.com/view/blaze-it-shaggy-smoke-scooby-doo-gif-5354085`)
         }
         else if (message.content.toLowerCase().startsWith(`!classic`)) {
           return message.reply(`https://tenor.com/view/crazy-cat-lady-agnes-loonstra-illustration-cat-cat-mom-gif-13715924`)
+        }
+        else if (message.content.toLowerCase().startsWith(`!hunor`)) {
+          return message.reply(`https://tenor.com/view/jim-carrey-bye-liar-gif-27660461`)
         }
         else if (message.content.toLowerCase().startsWith(`!dab`)) {
           return message.reply(`https://tenor.com/view/habibi-dubai-arabmoney-habibimoney-rrc-gif-26503509`)
         }
         else if (message.content.toLowerCase().startsWith(`!james`)) {
           return message.reply(`https://tenor.com/view/racist-point-smile-gif-16693098`)
+        }
+        else if (message.content.toLowerCase().startsWith(`!queen`) || message.content.toLocaleLowerCase.startsWith(`queenie`)) {
+          return message.reply(`https://tenor.com/view/disney-gif-9635069`)
         }
         else if (message.content.toLowerCase().startsWith(`!wick`)) {
           return message.reply(`https://tenor.com/view/disney-gif-9635069`)
@@ -237,14 +346,11 @@ const client = new Client({
               // Format response time to one decimal place
               const formattedResponseTime = (responseTime / 100).toFixed();
         
-              replyMessage.edit(`Pong! 🏓 \n **${formattedResponseTime}s**`);
+              replyMessage.edit(`Pong! 🏓 \n **${formattedResponseTime}ms**`);
             })
         }
         
         
-        
-        
-
         else if (message.mentions.has(client.user)) {
           message.react(`<:ping:1326194149808144425>`)
         }
