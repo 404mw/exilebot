@@ -1,4 +1,4 @@
-const {Client, GatewayIntentBits } = require('discord.js');
+const {Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
 require('dotenv').config();
 
 const token = process.env.TOKEN;
@@ -363,15 +363,32 @@ const client = new Client({
 
         if (interaction.commandName === 'help') {
           const embed = new EmbedBuilder()
-            .setColor(0x0099ff) // Set a color for the embed
-            .setTitle('Bot Help')
-            .setDescription('Here’s how to use the bot:')
+            .setColor(0x0099ff)
+            .setTitle('__**Exile\'s own amazing bot**__')
+            .setDescription('Here’s how to use it:')
             .addFields(
-              { name: '/help', value: 'Show this help message.' },
+              { name: '/help', value: 'to show this help message.' },
+              { name: '/se', value: 'To calculates Remaining HP of Star Expedition boss for you'}
             )
-            .setFooter({ text: 'Thank you for using the bot!', iconURL: client.user.displayAvatarURL() });
+            .setThumbnail(client.user.displayAvatarURL() )
+            
       
           return interaction.reply({ embeds: [embed] });
+        } else if (interaction.commandName === 'se') {
+
+            const input1 = interaction.options.getNumber('hp'); 
+            const input2 = interaction.options.getNumber('percentage');
+
+            const predefinedValue = sehpValues[input1];
+      
+            // Performing percentage-based calculation
+            const result = (predefinedValue * input2) / 100;
+
+            // Converting the result to desired format
+            let exponentialResult = result.toExponential(13);
+        
+            // Sending the result back as a reply
+           return interaction.reply(`> **x${input1}** <:hp:1325816948889747456>\n > **${exponentialResult}** remaining`);
         }
       });
       
