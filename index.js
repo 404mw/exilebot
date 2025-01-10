@@ -278,8 +278,10 @@ const client = new Client({
         else if (message.content.toLowerCase().startsWith(`!blank`)) {
           return message.reply(`<:blank:1326590365062660187> \n <:blank:1326590365062660187> \n <:blank:1326590365062660187> \n <:blank:1326590365062660187> \n <:blank:1326590365062660187>`)
         }
-        else if (message.content.toLowerCase().startsWith(`!patar`)) {
-          return message.reply(`https://tenor.com/view/yahia-potato-dance-gif-16070760`)
+        else if (message.content.toLowerCase().startsWith(`!patar` || `!patat` || `!xpatar` || `!xpatat`)) {
+          if (message.channel.id === '866773791560040519'){
+            return message.reply(`https://tenor.com/view/pats-for-patrick-i%E2%80%99m-with-stupid-gif-5535083890257725800`);
+          } else return message.reply(`https://tenor.com/view/yahia-potato-dance-gif-16070760`)
         }
         else if (message.content.toLowerCase().startsWith(`!fold`)) {
           const fold = [
@@ -326,11 +328,20 @@ const client = new Client({
         else if (message.content.toLowerCase().startsWith(`!dab`)) {
           return message.reply(`https://tenor.com/view/habibi-dubai-arabmoney-habibimoney-rrc-gif-26503509`)
         }
+        else if (message.content.toLowerCase().startsWith(`!ctv`)) {
+          return message.reply(`https://tenor.com/view/think-pooh-winnie-the-thinking-gif-24330775`)
+        }
         else if (message.content.toLowerCase().startsWith(`!james`)) {
           return message.reply(`https://tenor.com/view/racist-point-smile-gif-16693098`)
         }
-        else if (message.content.toLowerCase().startsWith(`!queen`) || message.content.toLocaleLowerCase.startsWith(`queenie`)) {
-          return message.reply(`https://tenor.com/view/disney-gif-9635069`)
+        else if (message.content.toLowerCase().startsWith(`!queen` || `queenie`)) {
+          return message.reply(`https://tenor.com/view/spider-man-gif-21019143`)
+        }
+        else if (message.content.toLowerCase().startsWith(`!me`) && message.author.username === 'm.w.') {
+          return message.reply(`https://tenor.com/view/drooling-slobber-spongebob-patrick-star-yummy-gif-13622877736389093652`)
+        } 
+        else if (message.content.toLowerCase().startsWith(`!mw`)){
+          return message.reply(`https://tenor.com/view/homer-awkward-awkward-silence-what-whattt-gif-3271184098276575610`)
         }
         else if (message.content.toLowerCase().startsWith(`!wick`)) {
           return message.reply(`https://tenor.com/view/disney-gif-9635069`)
@@ -374,7 +385,8 @@ const client = new Client({
             
       
           return interaction.reply({ embeds: [embed] });
-        } else if (interaction.commandName === 'se') {
+        }
+        else if (interaction.commandName === 'se') {
 
             const input1 = interaction.options.getNumber('hp'); 
             const input2 = interaction.options.getNumber('percentage');
