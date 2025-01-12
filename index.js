@@ -449,21 +449,21 @@ const client = new Client({
           }
 
           const pool = [
-            { answer: "E-", probability: 0.043, emoji: `<:awakene:1328071268146085969>`},
+            { answer: "E-", probability: 0.043, emoji: `<:awakenem:1328076005197348984>` },
             { answer: "E", probability: 0.198, emoji: `<:awakene:1328071268146085969>` },
-            { answer: "E+", probability: 0.288, emoji: `<:awakene:1328071268146085969>` },
-            { answer: "D-", probability: 0.200, emoji: `<:awakend:1328071247384416286>` },
+            { answer: "E+", probability: 0.288, emoji: `<:awakenep:1328076026110148739>` },
+            { answer: "D-", probability: 0.200, emoji: `<:awakendm:1328075963699040389>` },
             { answer: "D", probability: 0.092, emoji: `<:awakend:1328071247384416286>` },
-            { answer: "D+", probability: 0.048, emoji: `<:awakend:1328071247384416286>` },
-            { answer: "C-", probability: 0.044, emoji: "<:awakenc:1328071228300197980>" },
+            { answer: "D+", probability: 0.048, emoji: `<:awakendp:1328075988877443073>` },
+            { answer: "C-", probability: 0.044, emoji: "<:awakencm:1328075931754954772>" },
             { answer: "C", probability: 0.043, emoji: "<:awakenc:1328071228300197980>" },
-            { answer: "C+", probability: 0.0213, emoji: "<:awakenc:1328071228300197980>" },
-            { answer: "B-", probability: 0.0162, emoji: "<:awakenb:1328071210860286124>" },
+            { answer: "C+", probability: 0.0213, emoji: "<:awakencp:1328075947437592676>" },
+            { answer: "B-", probability: 0.0162, emoji: "<:awakenbm:1328076518412521564>" },
             { answer: "B", probability: 0.0055, emoji: "<:awakenb:1328071210860286124>" },
-            { answer: "B+", probability: 0.000745, emoji: "<:awakenb:1328071210860286124>" },
-            { answer: "A-", probability: 0.00015, emoji: "<:awakena:1328071192753602600>" },
+            { answer: "B+", probability: 0.000745, emoji: "<:awakenbp:1328076535055384757>" },
+            { answer: "A-", probability: 0.00015, emoji: "<:awakenam:1328076470895116319>" },
             { answer: "A", probability: 0.000065, emoji: "<:awakena:1328071192753602600>" },
-            { answer: "A+", probability: 0.000025, emoji: "<:awakena:1328071192753602600>" },
+            { answer: "A+", probability: 0.000025, emoji: "<:awakenap:1328076502218313799>" },
             { answer: "S", probability: 0.000015, emoji: "<:awakens:1328071289763659949>" }
           ];
 
