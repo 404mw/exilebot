@@ -29,7 +29,7 @@ const slashRegister = async () => {
             return option
             .setName("percentage")
             .setDescription("Provide the remaining % here")
-            .setRequired(true)
+            .setRequired(false)
             .setMinValue(1)
             .setMaxValue(100)
           })

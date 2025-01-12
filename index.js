@@ -278,7 +278,7 @@ const client = new Client({
         else if (message.content.toLowerCase().startsWith(`!blank`)) {
           return message.reply(`<:blank:1326590365062660187> \n <:blank:1326590365062660187> \n <:blank:1326590365062660187> \n <:blank:1326590365062660187> \n <:blank:1326590365062660187>`)
         }
-        else if (message.content.toLowerCase().startsWith(`!patar` || `!patat` || `!xpatar` || `!xpatat`)) {
+        else if (message.content.toLowerCase().startsWith(`!pata` || `!xpata`)) {
           if (message.channel.id === '866773791560040519'){
             return message.reply(`https://tenor.com/view/pats-for-patrick-i%E2%80%99m-with-stupid-gif-5535083890257725800`);
           } else return message.reply(`https://tenor.com/view/yahia-potato-dance-gif-16070760`)
@@ -326,10 +326,10 @@ const client = new Client({
           return message.reply(`https://tenor.com/view/jim-carrey-bye-liar-gif-27660461`)
         }
         else if (message.content.toLowerCase().startsWith(`!dab`)) {
-          return message.reply(`https://tenor.com/view/habibi-dubai-arabmoney-habibimoney-rrc-gif-26503509`)
+          return message.reply(`https://tenor.com/view/habibi-wildin-meme-funny-arab-gif-19979166`)
         }
         else if (message.content.toLowerCase().startsWith(`!ctv`)) {
-          return message.reply(`https://tenor.com/view/think-pooh-winnie-the-thinking-gif-24330775`)
+          return message.reply(`https://tenor.com/view/im-probably-the-best-in-the-world-hugs86-dig-deep-super-smash-bros-hugs-gif-21688184`)
         }
         else if (message.content.toLowerCase().startsWith(`!james`)) {
           return message.reply(`https://tenor.com/view/racist-point-smile-gif-16693098`)
@@ -342,6 +342,9 @@ const client = new Client({
         } 
         else if (message.content.toLowerCase().startsWith(`!mw`)){
           return message.reply(`https://tenor.com/view/homer-awkward-awkward-silence-what-whattt-gif-3271184098276575610`)
+        }
+        else if (message.content.toLowerCase().startsWith(`!wexon`)) {
+          return message.reply(`https://tenor.com/view/solara-roblox-roblox-hacks-hacks-exploits-gif-3309607858158260586`)
         }
         else if (message.content.toLowerCase().startsWith(`!wick`)) {
           return message.reply(`https://tenor.com/view/disney-gif-9635069`)
@@ -392,15 +395,17 @@ const client = new Client({
             const input2 = interaction.options.getNumber('percentage');
 
             const predefinedValue = sehpValues[input1];
+
+            if (!input2) {
+              let exponentialResult = predefinedValue.toExponential(13);
+              return interaction.reply(`> **x${input1}** <:hp:1325816948889747456> at **100%**\n > \n > **${exponentialResult}**`);
+            }
       
-            // Performing percentage-based calculation
             const result = (predefinedValue * input2) / 100;
 
-            // Converting the result to desired format
             let exponentialResult = result.toExponential(13);
         
-            // Sending the result back as a reply
-           return interaction.reply(`> **x${input1}** <:hp:1325816948889747456>\n > **${exponentialResult}** remaining`);
+           return interaction.reply(`> **x${input1}** <:hp:1325816948889747456> at **${input2}%**\n > \n > **${exponentialResult}** remaining`);
         }
       });
       
