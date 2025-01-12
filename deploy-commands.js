@@ -32,8 +32,18 @@ const slashRegister = async () => {
             .setRequired(false)
             .setMinValue(1)
             .setMaxValue(100)
-          })
-        
+          }),
+          new SlashCommandBuilder()
+          .setName("awaken")
+          .setDescription("do multiple awaken")
+          .addNumberOption(option => {
+            return option
+            .setName("times")
+            .setDescription("How many times you to awaken")
+            .setRequired(true)
+            .setMinValue(1)
+            .setMaxValue(999)
+            })
       ]
     })
   } catch (error) {

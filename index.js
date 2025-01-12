@@ -206,6 +206,37 @@ const sehpValues = {
     200: 10250000000   
   };
 
+function getRandomAnswer(pool) {
+  const random = Math.random();
+  let cumulativeProbability = 0;
+
+  for (const { answer, probability } of pool) {
+    cumulativeProbability += probability;
+    if (random < cumulativeProbability) {
+      return answer;
+    }
+  }
+
+  return null; // Fallback (in case of an error)
+}
+
+function runMultipleSelections(pool, iterations) {
+  const results = {};
+
+  // Initialize result counter for each answer
+  pool.forEach(({ answer }) => {
+    results[answer] = 0;
+  });
+
+  // Perform the selection multiple times
+  for (let i = 0; i < iterations; i++) {
+    const result = getRandomAnswer(pool);
+    results[result] += 1;
+  }
+
+  return results;
+}
+
 const client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -406,6 +437,49 @@ const client = new Client({
             let exponentialResult = result.toExponential(13);
         
            return interaction.reply(`> **x${input1}** <:hp:1325816948889747456> at **${input2}%**\n > \n > **${exponentialResult}** remaining`);
+        }
+        else if (interaction.commandName === 'awaken') {
+
+          const allowedChannelId = '1328069031118377103';
+          if (interaction.channelId !== allowedChannelId) {
+            return interaction.reply({
+              content: "This command can only be used in bot-spam channel.",
+              ephemeral: true
+            });
+          }
+
+          const pool = [
+            { answer: "E-", probability: 0.043, emoji: `<:awakene:1328046846249013291>`},
+            { answer: "E", probability: 0.198, emoji: `<:awakene:1328046846249013291>` },
+            { answer: "E+", probability: 0.288, emoji: `<:awakene:1328046846249013291>` },
+            { answer: "D-", probability: 0.200, emoji: `<:awakend:1328046829065076868>` },
+            { answer: "D", probability: 0.092, emoji: `<:awakend:1328046829065076868>` },
+            { answer: "D+", probability: 0.048, emoji: `<:awakend:1328046829065076868>` },
+            { answer: "C-", probability: 0.044, emoji: "<:awakenc:1328046869376536648>" },
+            { answer: "C", probability: 0.043, emoji: "<:awakenc:1328046869376536648>" },
+            { answer: "C+", probability: 0.0213, emoji: "<:awakenc:1328046869376536648>" },
+            { answer: "B-", probability: 0.0162, emoji: "<:awakenb:1328046805396754463>" },
+            { answer: "B", probability: 0.0055, emoji: "<:awakenb:1328046805396754463>" },
+            { answer: "B+", probability: 0.000745, emoji: "<:awakenb:1328046805396754463>" },
+            { answer: "A-", probability: 0.00015, emoji: "<:awakena:1328042092831965296>" },
+            { answer: "A", probability: 0.000065, emoji: "<:awakena:1328042092831965296>" },
+            { answer: "A+", probability: 0.000025, emoji: "<:awakena:1328042092831965296>" },
+            { answer: "S", probability: 0.000015, emoji: "<:awakens:1328058274955788360>" }
+          ];
+
+          const iterations = interaction.options.getNumber('times');
+      
+          const results = runMultipleSelections(pool, iterations);
+      
+          let reply = `You awakened **${iterations}** times:\n`;
+
+          for (const [answer, count] of Object.entries(results)) {
+          if (count > 0) {
+            const poolItem = pool.find(item => item.answer === answer);
+            reply += `${poolItem?.emoji} -> **${count}** times\n`;
+          }}
+
+           return interaction.reply(reply);
         }
       });
       
