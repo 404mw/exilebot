@@ -1,4 +1,4 @@
-const {Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
+const {Client, GatewayIntentBits, EmbedBuilder, MessageFlags } = require('discord.js');
 require('dotenv').config();
 
 const token = process.env.TOKEN;
@@ -247,12 +247,6 @@ const client = new Client({
     client.on('messageCreate', (message) => {
         
         if (message.author.bot) return; // Ignoring messages from the bot
-        else if (message.author.username === `neky96` && message.content.toLowerCase().startsWith(`!se`))
-          return (
-            message.reply(`only works for true exile members`),
-            message.channel.send(`<:poorneky:1326196181579333714>`)
-          )
-      
         else if (message.content.toLowerCase().startsWith('!se')) { // triggeres the command at !se
           const args = message.content.split(' '); // splitting with spaces
       
@@ -297,11 +291,18 @@ const client = new Client({
           message.reply(`> **x${input1}** <:hp:1325816948889747456>\n > **${exponentialResult}** remaining`);
         }
 
-        else if (message.content.toLowerCase().startsWith(`!kongen`)) {
+        else if (message.content.toLowerCase().startsWith(`!komgen`) || message.content.toLowerCase().startsWith(`!kongen`)) {
           return message.reply(`https://tenor.com/view/kim-jong-un-gif-6119244402377892028`)
         }
-        else if (message.content.toLowerCase().startsWith(`!adrian`)) {
-          return message.reply(`https://tenor.com/view/mckinley-whale-big-gif-3873017581534036627`)
+        else if (message.content.toLowerCase().startsWith(`!adrian`) || message.content.toLocaleLowerCase().startsWith(`!skjold`)) {
+          const adrian = [
+            "https://tenor.com/view/unusual-whales-unusual-whales-eat-money-gif-22693447",
+            "https://tenor.com/view/unusual-whales-unusual-whales-dive-gif-22693446",
+            "https://tenor.com/view/unusual-whales-unusual-whales-rain-money-gif-23090764",
+            "https://tenor.com/view/mckinley-whale-big-gif-3873017581534036627"]
+            
+            const result = Math.floor(Math.random() * adrian.length)
+          return message.reply(adrian[result])
         }
         else if (message.content.toLowerCase().startsWith(`!peitho`)) {
           return message.reply(`https://tenor.com/view/uncle-roger-weak-gif-19541923`)
@@ -309,7 +310,7 @@ const client = new Client({
         else if (message.content.toLowerCase().startsWith(`!blank`)) {
           return message.reply(`<:blank:1326590365062660187> \n <:blank:1326590365062660187> \n <:blank:1326590365062660187> \n <:blank:1326590365062660187> \n <:blank:1326590365062660187>`)
         }
-        else if (message.content.toLowerCase().startsWith(`!pata` || `!xpata`)) {
+        else if (message.content.toLowerCase().startsWith(`!pata`) || message.content.toLowerCase().startsWith(`!xpata`)) {
           if (message.channel.id === '866773791560040519'){
             return message.reply(`https://tenor.com/view/pats-for-patrick-i%E2%80%99m-with-stupid-gif-5535083890257725800`);
           } else return message.reply(`https://tenor.com/view/yahia-potato-dance-gif-16070760`)
@@ -365,7 +366,7 @@ const client = new Client({
         else if (message.content.toLowerCase().startsWith(`!james`)) {
           return message.reply(`https://tenor.com/view/racist-point-smile-gif-16693098`)
         }
-        else if (message.content.toLowerCase().startsWith(`!queen` || `queenie`)) {
+        else if (message.content.toLowerCase().startsWith(`!queen`)) {
           return message.reply(`https://tenor.com/view/spider-man-gif-21019143`)
         }
         else if (message.content.toLowerCase().startsWith(`!me`) && message.author.username === 'm.w.') {
@@ -376,6 +377,9 @@ const client = new Client({
         }
         else if (message.content.toLowerCase().startsWith(`!wexon`)) {
           return message.reply(`https://tenor.com/view/solara-roblox-roblox-hacks-hacks-exploits-gif-3309607858158260586`)
+        }
+        else if (message.content.toLowerCase().startsWith(`!tok`)) {
+          return message.reply(`https://tenor.com/view/family-guy-stewie-griffin-strippers-strip-girls-gif-4422950`)
         }
         else if (message.content.toLowerCase().startsWith(`!wick`)) {
           return message.reply(`https://tenor.com/view/disney-gif-9635069`)
@@ -408,17 +412,18 @@ const client = new Client({
 
         if (interaction.commandName === 'help') {
           const embed = new EmbedBuilder()
-            .setColor(0x0099ff)
+            .setColor(0x588543)
             .setTitle('__**Exile\'s own amazing bot**__')
-            .setDescription('Here’s how to use it:')
+            .setDescription('Here’s how to use it:\n -----------------------------------------------')
             .addFields(
               { name: '/help', value: 'to show this help message.' },
-              { name: '/se', value: 'To calculates Remaining HP of Star Expedition boss for you'}
+              { name: '/se', value: 'To calculate Remaining HP of Star Expedition boss'},
+              { name: '/awaken', value: 'Get your S today'}
             )
             .setThumbnail(client.user.displayAvatarURL() )
             
       
-          return interaction.reply({ embeds: [embed] });
+          return interaction.reply({ embeds: [embed], flags: MessageFlags.Ephemeral });
         }
         else if (interaction.commandName === 'se') {
 
