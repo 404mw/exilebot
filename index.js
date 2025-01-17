@@ -469,7 +469,9 @@ const client = new Client({
             { answer: "A-", probability: 0.00015, emoji: "<:awakenam:1328076470895116319>" },
             { answer: "A", probability: 0.000065, emoji: "<:awakena:1328071192753602600>" },
             { answer: "A+", probability: 0.000025, emoji: "<:awakenap:1328076502218313799>" },
-            { answer: "S", probability: 0.000015, emoji: "<:awakens:1328071289763659949>" }
+            { answer: "S", probability: 0.000005, emoji: "<:awakens:1328071289763659949>" },
+            { answer: "SS", probability: 0.000005, emoji: "<:awakenss:1329829671113855087>" },
+            { answer: "SSS", probability: 0.000005, emoji: "<:awakensss:1329829693968613428>" }
           ];
 
           const iterations = interaction.options.getNumber('times');
