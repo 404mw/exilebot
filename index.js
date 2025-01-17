@@ -1,4 +1,4 @@
-const {Client, GatewayIntentBits, EmbedBuilder, MessageFlags } = require('discord.js');
+const {Client, GatewayIntentBits, EmbedBuilder, MessageFlags} = require('discord.js');
 require('dotenv').config();
 
 const token = process.env.TOKEN;
@@ -327,13 +327,8 @@ const client = new Client({
           return message.reply(fold[result])
         }
         else if (message.content.toLowerCase().startsWith(`!mapi`)) {
-          const mapi = [
-            "https://tenor.com/view/johnny-bravo-muscles-pec-bounce-pecs-biceps-gif-17958622974887416284",
-            "https://tenor.com/view/pec-bounce-pecs-chest-bouncing-gif-20318718",
-            "https://tenor.com/view/muscle-man-gif-20456077"]
-            
-            const result = Math.floor(Math.random() * mapi.length)
-          return message.reply(mapi[result])
+          const mapi = `media/mapi.gif`
+          return message.reply({files: [mapi]})
         }
         else if (message.content.toLowerCase().startsWith(`!neky`)) {
           const neky = [
@@ -361,7 +356,8 @@ const client = new Client({
           return message.reply(`https://tenor.com/view/habibi-wildin-meme-funny-arab-gif-19979166`)
         }
         else if (message.content.toLowerCase().startsWith(`!ctv`)) {
-          return message.reply(`https://tenor.com/view/im-probably-the-best-in-the-world-hugs86-dig-deep-super-smash-bros-hugs-gif-21688184`)
+          const ctv = `media/ctv.gif`
+          message.reply({files: [ctv]});
         }
         else if (message.content.toLowerCase().startsWith(`!james`)) {
           return message.reply(`https://tenor.com/view/racist-point-smile-gif-16693098`)
@@ -487,6 +483,24 @@ const client = new Client({
           }}
 
            return interaction.reply(reply);
+        }
+        else if (interaction.commandName === 'emote') {
+          const emotes = [
+            { name: `bongosmash`, emote: `<a:bongosmash:1329891033605083167>`},
+            { name: `cathuh`, emote: `<a:cathuh:1329891047089766552>`},
+            { name: `nodders`, emote: `<a:nodders:1329891059299520512>`},
+            { name: `saddies`, emote: `<a:saddies:1329891073690173460>`}
+          ]
+
+          const userChoice = interaction.options.getString('name');
+
+          const reply = emotes.find(item => item.name === userChoice);
+
+          if (reply) {
+            interaction.reply(reply.emote);
+          } else {
+            interaction.reply(`Cant find emoji with name ${reply}`);
+          }
         }
       });
       
