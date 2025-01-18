@@ -312,7 +312,14 @@ const client = new Client({
         }
         else if (message.content.toLowerCase().startsWith(`!pata`) || message.content.toLowerCase().startsWith(`!xpata`)) {
           if (message.channel.id === '866773791560040519'){
-            return message.reply(`https://tenor.com/view/pats-for-patrick-i%E2%80%99m-with-stupid-gif-5535083890257725800`);
+            const patar = [
+              "https://tenor.com/view/what-patrick-star-saving-bikini-bottom-the-sandy-cheeks-movie-what%27s-the-big-deal-gif-7543153473062287336",
+              "https://tenor.com/view/patrick-star-in-love-heart-eyes-love-you-smile-gif-14881894487762636065",
+              "https://tenor.com/view/spongebob-squarepants-cheer-number-one-patrick-star-gif-1178511842618206257",
+              "https://tenor.com/view/lol-laughing-laugh-cracking-up-spongebob-gif-993144828522412536"]
+              
+              const result = Math.floor(Math.random() * patar.length)
+            return message.reply(patar[result])
           } else return message.reply(`https://tenor.com/view/yahia-potato-dance-gif-16070760`)
         }
         else if (message.content.toLowerCase().startsWith(`!fold`)) {
@@ -378,7 +385,7 @@ const client = new Client({
           return message.reply(`https://tenor.com/view/family-guy-stewie-griffin-strippers-strip-girls-gif-4422950`)
         }
         else if (message.content.toLowerCase().startsWith(`!wick`)) {
-          return message.reply(`https://tenor.com/view/disney-gif-9635069`)
+          return message.reply(`https://tenor.com/view/play-poe-2-the-best-game-arpg-poe-like-true-diablo-path-of-exile-2-gif-16648459918324750033`)
         }
         else if (message.content.toLowerCase().startsWith('!ping')) {
           const sentTime = Date.now(); // Capture the timestamp when the bot processes the command
