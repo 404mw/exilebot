@@ -359,7 +359,7 @@ client.on("messageCreate", (message) => {
       return message.reply(patar[result]);
     } else
       return message.reply(
-        `https://tenor.com/view/yahia-potato-dance-gif-16070760`
+        `https://tenor.com/view/minions-potato-bananas-gif-19661796`
       );
   } else if (message.content.toLowerCase().startsWith(`!fold`)) {
     const fold = [
