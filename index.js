@@ -630,6 +630,41 @@ client.on("interactionCreate", (interaction) => {
           flags: MessageFlags.Ephemeral
         });
       }
+    } else if (interaction.commandName === "get_aurora_gems"){
+
+      const costs = [
+        {name: 'origin', value: 5, emoji: '<:origin:1332021165073367060>'},
+        {name: 'surge', value: 12, emoji: '<:surge:1332021150586245140>'},
+        {name: 'chaos', value: 21, emoji: '<:chaos:1332021096110755975>'},
+        {name: 'core', value: 32, emoji: '<:core:1332021073977278544>'},
+        {name: 'polystar', value: 45, emoji: '<:polystar:1332021054763303053>'},
+        {name: 'nirvana', value: 60, emoji: '<:nirvana:1332021038044676096>'}
+      ];
+
+      let reply = '';
+      let totalSum = 0;
+      let hasInput = false;
+  
+      for (const { name, value, emoji } of costs) {
+        const userInput = interaction.options.getNumber(name); // Get user input for each item
+        if (userInput !== null) {
+          hasInput = true;
+          const result = userInput * value; // Calculate result based on multiplier
+          reply += `> ${emoji} x${userInput} -> **__${result}__**\n`;
+          totalSum += result;
+        }
+      }
+
+        if (hasInput) {
+          reply += `\nTotal Sum: **${totalSum}**<:auroragem:1332031851048472627>`;
+          interaction.reply(reply);
+        } else {
+          interaction.reply({
+            content: 'Something went wrong or incorrect input provided',
+            flags: MessageFlags.Ephemeral,
+          });
+        }
+      
     }
   }
 });
