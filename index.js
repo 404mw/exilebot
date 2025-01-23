@@ -646,17 +646,17 @@ client.on("interactionCreate", (interaction) => {
       let hasInput = false;
   
       for (const { name, value, emoji } of costs) {
-        const userInput = interaction.options.getNumber(name); // Get user input for each item
+        const userInput = interaction.options.getNumber(name);
         if (userInput !== null) {
           hasInput = true;
-          const result = userInput * value; // Calculate result based on multiplier
-          reply += `> ${emoji} x${userInput} -> **__${result}__**\n`;
+          const result = userInput * value;
+          reply += `${emoji} x${userInput} -> **${result}**\n`;
           totalSum += result;
         }
       }
 
         if (hasInput) {
-          reply += `\nTotal Sum: **${totalSum}**<:auroragem:1332031851048472627>`;
+          reply += `\nTotal Sum: **__${totalSum}__** <:auroragem:1332031851048472627>`;
           interaction.reply(reply);
         } else {
           interaction.reply({
