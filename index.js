@@ -661,7 +661,7 @@ client.on("interactionCreate", (interaction) => {
         }
       }
 
-      reply += `<:bag:1333083225244827698> x${bagGems} <:auroragem:1332031851048472627> , x${bagSpirit} <:spiritvein:1333082447772123146>\n`;
+      reply += `\n<:bag:1333083225244827698> -> **${bagGems}** <:auroragem:1332031851048472627> , x**${bagSpirit}** <:spiritvein:1333082447772123146>\n`;
 
         if (hasInput) {
           reply += `\nTotal Sum: **__${totalGem + bagGems}__** <:auroragem:1332031851048472627> and **__${totalSpirit + bagSpirit}__** <:spiritvein:1333082447772123146>`;
