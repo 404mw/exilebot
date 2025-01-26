@@ -632,31 +632,39 @@ client.on("interactionCreate", (interaction) => {
       }
     } else if (interaction.commandName === "get_aurora_gems"){
 
+      const bagGems = interaction.options.getNumber("bag_aurora")
+      const bagSpirit = interaction.options.getNumber("bag_spirit")
+
       const costs = [
-        {name: 'origin', value: 5, emoji: '<:origin:1332021165073367060>'},
-        {name: 'surge', value: 12, emoji: '<:surge:1332021150586245140>'},
-        {name: 'chaos', value: 21, emoji: '<:chaos:1332021096110755975>'},
-        {name: 'core', value: 32, emoji: '<:core:1332021073977278544>'},
-        {name: 'polystar', value: 45, emoji: '<:polystar:1332021054763303053>'},
-        {name: 'nirvana', value: 60, emoji: '<:nirvana:1332021038044676096>'}
+        {name: 'origin', gem: 5, spiritvein: 197236, emoji: '<:origin:1332021165073367060>'},
+        {name: 'surge', gem: 12, spiritvein: 277200, emoji: '<:surge:1332021150586245140>'},
+        {name: 'chaos', gem: 21, spiritvein: 356400, emoji: '<:chaos:1332021096110755975>'},
+        {name: 'core', gem: 32, spiritvein: 435600, emoji: '<:core:1332021073977278544>'},
+        {name: 'polystar', gem: 45, spiritvein: 514800, emoji: '<:polystar:1332021054763303053>'},
+        {name: 'nirvana', gem: 60, spiritvein: 619300, emoji: '<:nirvana:1332021038044676096>'},
+        {name: 'bag_aurora', gem: 1, emoji: '<:bag:1333083225244827698>'},
+        {name: 'bag_spirit', spiritvein: 1, emoji: '<:bag:1333083225244827698>'}
       ];
 
       let reply = '';
-      let totalSum = 0;
+      let totalGem = 0;
+      let totalSpirit = 0;
       let hasInput = false;
   
-      for (const { name, value, emoji } of costs) {
+      for (const { name, gem, spiritvein, emoji } of costs.slice(0, 6)) {
         const userInput = interaction.options.getNumber(name);
         if (userInput !== null) {
           hasInput = true;
-          const result = userInput * value;
-          reply += `${emoji} x${userInput} -> **${result}**\n`;
-          totalSum += result;
+          const resultGem = userInput * gem;
+          const resultSpirit = userInput * spiritvein
+          reply += `${emoji} x${userInput} -> **${resultGem}** <:auroragem:1332031851048472627> and **${resultSpirit} <:spiritvein:1333082447772123146>**\n`;
+          totalGem += resultGem + bagGems;
+          totalSpirit += resultSpirit + bagSpirit;
         }
       }
 
         if (hasInput) {
-          reply += `\nTotal Sum: **__${totalSum}__** <:auroragem:1332031851048472627>`;
+          reply += `\nTotal Sum: **__${totalGem}__** <:auroragem:1332031851048472627> and **__${totalSpirit}__** <:spiritvein:1333082447772123146>`;
           interaction.reply(reply);
         } else {
           interaction.reply({
