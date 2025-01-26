@@ -641,9 +641,7 @@ client.on("interactionCreate", (interaction) => {
         {name: 'chaos', gem: 21, spiritvein: 356400, emoji: '<:chaos:1332021096110755975>'},
         {name: 'core', gem: 32, spiritvein: 435600, emoji: '<:core:1332021073977278544>'},
         {name: 'polystar', gem: 45, spiritvein: 514800, emoji: '<:polystar:1332021054763303053>'},
-        {name: 'nirvana', gem: 60, spiritvein: 619300, emoji: '<:nirvana:1332021038044676096>'},
-        {name: 'bag_aurora', gem: 1, emoji: '<:bag:1333083225244827698>'},
-        {name: 'bag_spirit', spiritvein: 1, emoji: '<:bag:1333083225244827698>'}
+        {name: 'nirvana', gem: 60, spiritvein: 619300, emoji: '<:nirvana:1332021038044676096>'}
       ];
 
       let reply = '';
@@ -658,13 +656,15 @@ client.on("interactionCreate", (interaction) => {
           const resultGem = userInput * gem;
           const resultSpirit = userInput * spiritvein
           reply += `${emoji} x${userInput} -> **${resultGem}** <:auroragem:1332031851048472627> and **${resultSpirit} <:spiritvein:1333082447772123146>**\n`;
-          totalGem += resultGem + bagGems;
-          totalSpirit += resultSpirit + bagSpirit;
+          totalGem += resultGem;
+          totalSpirit += resultSpirit;
         }
       }
 
+      reply += `<:bag:1333083225244827698> x${bagGems} <:auroragem:1332031851048472627> , x${bagSpirit} <:spiritvein:1333082447772123146>\n`;
+
         if (hasInput) {
-          reply += `\nTotal Sum: **__${totalGem}__** <:auroragem:1332031851048472627> and **__${totalSpirit}__** <:spiritvein:1333082447772123146>`;
+          reply += `\nTotal Sum: **__${totalGem + bagGems}__** <:auroragem:1332031851048472627> and **__${totalSpirit + bagSpirit}__** <:spiritvein:1333082447772123146>`;
           interaction.reply(reply);
         } else {
           interaction.reply({
