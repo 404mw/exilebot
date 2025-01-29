@@ -3,3 +3,4 @@ node_modules/
 createChannel.js
 deploy-commands.js
 delete-emoji.js
+delete-command.js

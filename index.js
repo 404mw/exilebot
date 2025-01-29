@@ -710,15 +710,35 @@ client.on("interactionCreate", (interaction) => {
 
         reply += `\n**__Goal Temple__** -> \`${inputTemple}\`:\nRequirements: ${emojis.gem} \`${getTempleData.gem}\` and ${emojis.spiritvein} \`${getTempleData.spiritvein}\`\nAt Hand: ${emojis.gem}\`${totalGem + bagGems}\` and ${emojis.spiritvein} \`${totalSpirit + bagSpirit}\`\n`
 
-        const resultTempleGem = getTempleData.gem - totalGem + bagGems;
-        const resultTempleSpirit = getTempleData.spiritvein - totalSpirit + bagSpirit;
+        const resultTempleGem = getTempleData.gem - (totalGem + bagGems);
+        const resultTempleSpirit = getTempleData.spiritvein - (totalSpirit + bagSpirit);
 
-        if (resultTempleGem > 0) {
+        if (resultTempleGem > 0 || resultTempleSpirit > 0) {
           hasInput = true;
-          reply += `Missing: ${emojis.gem}\`${resultTempleGem}\` and ${emojis.spiritvein} \`${resultTempleSpirit}\``
-        } else if (resultTempleGem < 0) {
+          reply += `\nMissing amount: `
+
+          if (resultTempleGem > 0) {
+            reply += `${emojis.gem}\`${resultTempleGem}\` `
+          }
+
+          if (resultTempleSpirit > 0) {
+            reply += `${emojis.spiritvein} \`${resultTempleSpirit}\` `
+          }
+
+        }
+        
+        if (resultTempleGem < 0 || resultTempleSpirit < 0) {
           hasInput = true;
-          reply += `You exceed: ${emojis.gem}\`${Math.abs(resultTempleGem)}\` and ${emojis.spiritvein} \`${Math.abs(resultTempleSpirit)}\``
+          reply += `\nExceeded amount: `
+
+          if (resultTempleGem < 0) {
+            reply += `${emojis.gem}\`${Math.abs(resultTempleGem)}\` `
+          }
+
+          if (resultTempleSpirit < 0) {
+            reply += `${emojis.spiritvein} \`${Math.abs(resultTempleSpirit)}\` `
+          }
+          
         }
       } else if (inputTemple == null && reply) {
         hasInput = true;
