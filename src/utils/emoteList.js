@@ -1,0 +1,27 @@
+const emoteList = [
+          { name: `Bongo - Smash`, emote: `<a:bongosmash:1329891033605083167>` },
+          { name: `Cat - Huh`, emote: `<a:cathuh:1329891047089766552>` },
+          { name: `Peepo - Nodders`, emote: `<a:nodders:1329891059299520512>` },
+          { name: `Peepo - Saddies`, emote: `<a:saddies:1329890684689317991>` },
+          { name: `Peepo - Rich Cash`, emote: `<a:peepo_richcash:1331281801121107988>` },
+          { name: `Peepo - Sad Raining`, emote: `<a:peepo_sadrains:1331281784578510909>` },
+          { name: `Peepo - Blushed Excited`, emote: `<a:peepo_blushexcited:1331281761199722517>` },
+          { name: `Peepo - Bonked`, emote: `<a:peepo_bonks:1331281734968279120>` },
+          { name: `Peepo - Cheering`, emote: `<a:peepo_cheers:1331281713854288044>` },
+          { name: `Peepo - Sleeping`, emote: `<a:peepo_sleeps:1331281686683713647>` },
+          { name: `Peepo - Shrugs`, emote: `<a:peepo_shrugs:1331281663522771036>` },
+          { name: `Peepo - Saiyan`, emote: `<a:peepo_saiyan:1331281607121702973>` },
+          { name: `Peepo - Peace Out`, emote: `<a:peepo_peaceout:1331281551027339356>` },
+          { name: `Peepo - Raining Money`, emote: `<a:peepo_moneyrain:1331281530106150942>` },
+          { name: `Peepo - Gun Shooting`, emote: `<a:peepo_gunshoot:1331281504986206281>` },
+          { name: `Peepo - Clapping`, emote: `<a:peepo_claps:1331281477673025669>` },
+          { name: `Peepo - Eye Roll`, emote: `<a:peepo_eyeroll:1331281449885634631>` },
+          { name: `Peepo - Yummy`, emote: `<a:peepo_yummies:1331281414741561354>` },
+          { name: `Peepo - Hand Guns`, emote: `<a:peepo_guns:1331281397536788552>` },
+          { name: `Peepo - Tongue`, emote: `<a:peepo_tongue:1331281375856431147>` },
+          { name: `Peepo - Blowing Kiss`, emote: `<a:peepo_blowkiss:1331281361708777533>` },
+          { name: `Peepo - Fight`, emote: `<a:peepo_fight:1331278447443574855>` },
+          { name: `Peepo - Giggles`, emote: `<a:peepo_giggles:1331278421430370395>` },
+];
+
+module.exports = emoteList

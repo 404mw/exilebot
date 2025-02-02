@@ -1,6 +1,3 @@
 node_modules/
 .env
-createChannel.js
-deploy-commands.js
-delete-emoji.js
-delete-command.js
+others
