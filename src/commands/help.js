@@ -10,7 +10,7 @@ module.exports = {
             .setColor(0x588543)
             .setTitle("__**Exile's own amazing bot**__")
             .setDescription(
-                `All the active \`/\`commands are listed here:\n _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _`
+                `All the active \`/\`commands are listed here:\n-------------------------------------------- \n`
             )
             .addFields(
                 {

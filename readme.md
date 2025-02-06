@@ -1,0 +1,1 @@
+exilebot is a Discord Bot made for the **Frendos of Exile**. which brings some fun and calculations for the mobile game Idle Heroes.
