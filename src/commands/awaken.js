@@ -14,13 +14,13 @@ module.exports = {
     ),
 
   async execute(interaction) {
-    // const allowedChannelId = "1328069031118377103";
-    // if (interaction.channelId !== allowedChannelId) {
-    //   return interaction.reply({
-    //     content: "This command can only be used in #bot-spam channel.",
-    //     flags: MessageFlags.Ephemeral,
-    //   });
-    // }
+    const allowedChannelId = "1328069031118377103";
+    if (interaction.channelId !== allowedChannelId) {
+      return interaction.reply({
+        content: "This command can only be used in #bot-spam channel.",
+        flags: MessageFlags.Ephemeral,
+      });
+    }
 
     const pool = [
       {
@@ -187,8 +187,9 @@ module.exports = {
     const results = runMultipleSelections(pool, iterations);
 
     let reply = `You awakened **${iterations}** times:\n`;
-    let totalRetire = 0
-    let totalPoints = 0
+    let totalRetire = 0;
+    let totalPoints = 0;
+    const totalCSG = iterations * 100; 
 
     for (const [answer, count] of Object.entries(results)) {
       if (count > 0) {
@@ -200,7 +201,9 @@ module.exports = {
         totalPoints += pointsValue;
       }
     }
-     reply += `\nCSGs Spent = \`${iterations * 100}\`\nPoints Earned = \`${totalPoints}\`\nRetirement Value = \`${totalRetire}\``
+
+    const percentage = (totalRetire / totalCSG) * 100;
+     reply += `\nCSGs Spent = \`${totalCSG}\`\nRetired Amount = \`${totalRetire}\`\nReturn Valued at = \`${percentage.toFixed(2)}%\`\n\nPoints Earned for Gala = \`${totalPoints}\`\n`
     return interaction.reply(reply);
   },
 };
