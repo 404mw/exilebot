@@ -15,7 +15,7 @@ module.exports = {
 
   async execute(interaction) {
     const allowedChannelId = "1328069031118377103";
-    if (interaction.channelId !== allowedChannelId) {
+    if (interaction.inGuild() && interaction.channelId !== allowedChannelId) {
       return interaction.reply({
         content: "This command can only be used in #bot-spam channel.",
         flags: MessageFlags.Ephemeral,

@@ -52,34 +52,18 @@ module.exports = {
     let filtered;
     if (groupName === `peepo`) {
       filtered = emotePeepo
-        .filter((emote) =>
-          emote.name.toLowerCase().includes(focusedValue.toLowerCase())
-        )
-        .slice(0, 25)
-        .map((emote) => ({ name: emote.name, value: emote.name }));
     } else if (groupName === `panda`) {
       filtered = emotePanda
-        .filter((emote) =>
-          emote.name.toLowerCase().includes(focusedValue.toLowerCase())
-        )
-        .slice(0, 25)
-        .map((emote) => ({ name: emote.name, value: emote.name }));
     } else if (groupName === `cat`) {
       filtered = emoteCat
-        .filter((emote) =>
-          emote.name.toLowerCase().includes(focusedValue.toLowerCase())
-        )
-        .slice(0, 25)
-        .map((emote) => ({ name: emote.name, value: emote.name }));
     } else if (groupName === `others`) {
       filtered = emoteOthers
-        .filter((emote) =>
-          emote.name.toLowerCase().includes(focusedValue.toLowerCase())
-        )
-        .slice(0, 25)
-        .map((emote) => ({ name: emote.name, value: emote.name }));
     }
-
-    interaction.respond(filtered);
+    const response = filtered.filter((emote) =>
+      emote.name.toLowerCase().includes(focusedValue.toLowerCase())
+    )
+    .slice(0, 25)
+    .map((emote) => ({ name: emote.name, value: emote.name }));
+    interaction.respond(response);
   },
 };

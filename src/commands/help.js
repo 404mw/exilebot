@@ -10,7 +10,7 @@ module.exports = {
             .setColor(0x588543)
             .setTitle("__**Exile's own amazing bot**__")
             .setDescription(
-                `All the active \`/\`commands are listed here:\n-------------------------------------------- \n`
+                `All the active \`/commands\` are listed here:\n-------------------------------------------- \n`
             )
             .addFields(
                 {
@@ -23,7 +23,7 @@ module.exports = {
                 },
                 { 
                     name: "`/emote`", 
-                    value: "> Sends emojis/gifs on your behalf"
+                    value: "> No Nitro!!!?? No Worries. Send nitro emotes and spice up the chat"
                 },
                 { 
                     name: "`/get_dt_mats`", 
