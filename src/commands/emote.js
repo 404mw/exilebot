@@ -9,7 +9,6 @@ module.exports = {
       option
         .setName(`group`)
         .setDescription(`Select a group of emoji to choose from`)
-        .setRequired(true)
         .addChoices(
           { name: `Peepos`, value: `peepo` },
           { name: `Pandas`, value: `panda` },
@@ -22,7 +21,6 @@ module.exports = {
         .setName(`name`)
         .setDescription(`Emoji name here`)
         .setAutocomplete(true)
-        .setRequired(true)
     ),
 
   async execute(interaction) {
@@ -58,7 +56,8 @@ module.exports = {
       filtered = emoteCat
     } else if (groupName === `others`) {
       filtered = emoteOthers
-    }
+    } else { filtered = [...emotePeepo, ...emotePanda, ...emoteCat, ...emoteOthers] }
+
     const response = filtered.filter((emote) =>
       emote.name.toLowerCase().includes(focusedValue.toLowerCase())
     )
