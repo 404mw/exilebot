@@ -1,17 +1,16 @@
-module.exports = {
-    name: "ping",
-    description: "Sends Pong and later edits the message with response time",
+export default {
+  name: "ping",
+  description: "Sends Pong and later edits the message with response time",
 
-    execute(message) {
-        const sentTime = Date.now(); // Capture the timestamp when the bot processes the command
+  async execute(message) {
+    try {
+      const sentTime = Date.now();
+      const replyMessage = await message.reply("Pong! 🏓");
 
-    message.reply("Pong! 🏓").then((replyMessage) => {
-      const responseTime = Date.now() - sentTime; // Calculate response time
-      
-      // Format response time to one decimal place
-      const formattedResponseTime = (responseTime / 100).toFixed();
-
-      replyMessage.edit(`Pong! 🏓 \n **${formattedResponseTime}ms**`);
-    });
+      const responseTime = Date.now() - sentTime;
+      await replyMessage.edit(`Pong! 🏓 \n **${responseTime}ms**`);
+    } catch (error) {
+      console.error("Error in ping command:", error);
     }
+  },
 };

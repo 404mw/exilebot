@@ -47,23 +47,23 @@ const emoteCat = [
 ];
 
 const emotePanda = [
-    { name: `Fire`, emote: `<a:panda_fire:1337833115225161788>` },
-    { name: `Shy Waving`, emote: `<a:shy_wave:1337833037056180286>` },
-    { name: `Surprise Bop and Leave`, emote: `<a:bop_leave:1337833053518823477>` },
-    { name: `Knife`, emote: `<a:panda_knife:1337839249650618368>` },
-    { name: `Gimme`, emote: `<a:panda_gimme:1337839058059005963>` },
+  { name: `Fire`, emote: `<a:panda_fire:1337833115225161788>` },
+  { name: `Shy Waving`, emote: `<a:shy_wave:1337833037056180286>` },
+  { name: `Surprise Bop and Leave`, emote: `<a:bop_leave:1337833053518823477>` },
+  { name: `Knife`, emote: `<a:panda_knife:1337839249650618368>` },
+  { name: `Gimme`, emote: `<a:panda_gimme:1337839058059005963>` },
 ]
 
 const emoteOthers = [
-    { name: `Bongo - Smash`, emote: `<a:bongosmash:1329891033605083167>` },
-    { name: `Hyper Yayy `, emote: `<a:yayyy:1337833130144436355>` },
-    { name: `Patrick - Loser`, emote: `<a:patrick_loser:1337839386724929669>` },
+  { name: `Bongo - Smash`, emote: `<a:bongosmash:1329891033605083167>` },
+  { name: `Hyper Yayy `, emote: `<a:yayyy:1337833130144436355>` },
+  { name: `Patrick - Loser`, emote: `<a:patrick_loser:1337839386724929669>` },
 ]
 
 
-module.exports = {
-    emotePeepo,
-    emoteCat,
-    emotePanda,
-    emoteOthers
-}
+export {
+  emotePeepo,
+  emoteCat,
+  emotePanda,
+  emoteOthers,
+};

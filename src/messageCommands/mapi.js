@@ -1,10 +1,15 @@
-module.exports = {
-    name: "mapi",
-    aliases: ["mapus", "m4pi"],
-    description: "Sends Mapi's own GIF",
+export default {
+  name: "mapi",
+  aliases: ["mapus", "m4pi"],
+  description: "Sends Mapi's own GIF",
 
-    execute(message) {
-        const mapi = './media/mapi.gif';
-    return message.reply({ files: [mapi] });
+  async execute(message) {
+    const mapi = "./media/mapi.gif";
+    try {
+      await message.delete();
+      await message.message.send({ files: [mapi] });
+    } catch (error) {
+      console.error("Failed to delete message or send GIF:", error);
     }
+  },
 };

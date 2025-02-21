@@ -1,8 +1,15 @@
-module.exports = {
-    name: "peitho",
-    description: "Sends Why so weak GIF",
+export default {
+  name: "peitho",
+  description: "Sends Why so weak GIF",
 
-    execute(message) {
-        return message.reply(`https://tenor.com/view/uncle-roger-weak-gif-19541923`);
+  async execute(message) {
+    try {
+      await message.delete();
+      await message.channel.send(
+        "https://tenor.com/view/uncle-roger-weak-gif-19541923"
+      );
+    } catch (error) {
+      console.error("Failed to delete message or send GIF:", error);
     }
+  },
 };

@@ -1,7 +1,12 @@
-const { SlashCommandBuilder, MessageFlags } = require('discord.js');
-const { emotePeepo, emoteCat, emotePanda, emoteOthers} = require("../utils/emoteList.js");
+import { SlashCommandBuilder, MessageFlags } from "discord.js";
+import {
+  emotePeepo,
+  emoteCat,
+  emotePanda,
+  emoteOthers,
+} from "../utils/emoteList.js";
 
-module.exports = {
+export default {
   data: new SlashCommandBuilder()
     .setName(`emote`)
     .setDescription(`free nitro experience`)
@@ -45,24 +50,25 @@ module.exports = {
 
   async autocomplete(interaction) {
     const groupName = interaction.options.getString("group");
-    const focusedValue = interaction.options.getFocused();
+    const focusedValue = interaction.options.getFocused()?.toLowerCase();
 
-    let filtered;
-    if (groupName === `peepo`) {
-      filtered = emotePeepo
-    } else if (groupName === `panda`) {
-      filtered = emotePanda
-    } else if (groupName === `cat`) {
-      filtered = emoteCat
-    } else if (groupName === `others`) {
-      filtered = emoteOthers
-    } else { filtered = [...emotePeepo, ...emotePanda, ...emoteCat, ...emoteOthers] }
+    if (!focusedValue) return interaction.respond([]);
 
-    const response = filtered.filter((emote) =>
-      emote.name.toLowerCase().includes(focusedValue.toLowerCase())
-    )
-    .slice(0, 25)
-    .map((emote) => ({ name: emote.name, value: emote.name }));
+    const emoteGroups = {
+      peepo: emotePeepo,
+      panda: emotePanda,
+      cat: emoteCat,
+      others: emoteOthers,
+      all: [...emotePeepo, ...emotePanda, ...emoteCat, ...emoteOthers],
+    };
+
+    const filtered = emoteGroups[groupName] || emoteGroups.all;
+
+    const response = filtered
+      .filter((emote) => emote.name.toLowerCase().includes(focusedValue))
+      .slice(0, 25)
+      .map(({ name }) => ({ name, value: name }));
+
     interaction.respond(response);
   },
 };

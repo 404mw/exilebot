@@ -1,8 +1,15 @@
-module.exports = {
-    name: "wexon",
-    description: "Sends a Solara GIF",
+export default {
+  name: "wexon",
+  description: "Sends a Solara GIF",
 
-    execute(message) {
-        return message.reply(`https://tenor.com/view/solara-roblox-roblox-hacks-hacks-exploits-gif-3309607858158260586`);
+  async execute(message) {
+    try {
+      await message.delete();
+      await message.channel.send(
+        `https://tenor.com/view/solara-roblox-roblox-hacks-hacks-exploits-gif-3309607858158260586`
+      );
+    } catch (error) {
+      console.error("Error deleting message or sending GIF:", error);
     }
+  },
 };

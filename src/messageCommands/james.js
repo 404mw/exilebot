@@ -1,8 +1,15 @@
-module.exports = {
-    name: "james",
-    description: "Sends a Racists(Racer) GIF",
+export default {
+  name: "james",
+  description: "Sends a Racists(Racer) GIF",
 
-    execute(message) {
-        return message.reply(`https://tenor.com/view/racist-point-smile-gif-16693098`);
+  async execute(message) {
+    try {
+      await message.delete();
+      await message.channel.send(
+        `https://tenor.com/view/racist-point-smile-gif-16693098`
+      );
+    } catch (error) {
+      console.error("Failed to delete message or send GIF:", error);
     }
+  },
 };

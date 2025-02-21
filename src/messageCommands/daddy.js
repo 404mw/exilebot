@@ -1,9 +1,16 @@
-module.exports = {
-    name: "daddy",
-    aliases: ["shaggy"],
-    description: "Sends a dope shaggy's GIF",
+export default {
+  name: "daddy",
+  aliases: ["shaggy"],
+  description: "Sends a dope shaggy's GIF",
 
-    execute(message) {
-        return message.reply(`https://tenor.com/view/blaze-it-shaggy-smoke-scooby-doo-gif-5354085`);
+  async execute(message) {
+    try {
+      await message.delete();
+      await message.channel.send(
+        `https://tenor.com/view/blaze-it-shaggy-smoke-scooby-doo-gif-5354085`
+      );
+    } catch (error) {
+      console.error("Failed to delete message or send GIF:", error);
     }
+  },
 };

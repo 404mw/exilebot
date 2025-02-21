@@ -1,8 +1,15 @@
-module.exports = {
-    name: "queen",
-    description: "Sends a girl's GIF scared by a spider",
+export default {
+  name: "queen",
+  description: "Sends a girl's GIF scared by a spider",
 
-    execute(message) {
-        return message.reply(`https://tenor.com/view/spider-man-gif-21019143`);
+  async execute(message) {
+    try {
+      await message.delete();
+      await message.channel.send(
+        `https://tenor.com/view/spider-man-gif-21019143`
+      );
+    } catch (error) {
+      console.error("Error deleting message or sending GIF:", error);
     }
+  },
 };

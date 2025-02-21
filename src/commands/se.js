@@ -1,7 +1,7 @@
-const { SlashCommandBuilder } = require("discord.js");
-const sehpValues = require(`../utils/seHp.js`)
+import { SlashCommandBuilder } from "discord.js";
+import sehpValues from "../utils/seHp.js";
 
-module.exports = {
+export default {
   data: new SlashCommandBuilder()
     .setName(`se`)
     .setDescription(`Calculates Remaining HP of Star Expedition boss for you`)
@@ -23,7 +23,6 @@ module.exports = {
     ),
 
   async execute(interaction) {
-
     const input1 = interaction.options.getNumber("hp");
     const input2 = interaction.options.getNumber("percentage");
 
@@ -39,7 +38,7 @@ module.exports = {
 
     if (!input2) {
       if (predefinedValue >= 1e14) {
-        predefinedValue = predefinedValue.toExponential(13)
+        predefinedValue = predefinedValue.toExponential(13);
       }
       return interaction.reply(
         `> **x${input1}** <:hp:1325816948889747456> at **100%**\n > \n > ${bossEmoji} **${predefinedValue}**`
@@ -49,7 +48,7 @@ module.exports = {
     let result = (predefinedValue * input2) / 100;
 
     if (result >= 1e14) {
-      result = result.toExponential(13)
+      result = result.toExponential(13);
     }
 
     return interaction.reply(

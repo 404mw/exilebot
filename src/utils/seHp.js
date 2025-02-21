@@ -201,4 +201,4 @@ const sehpValues = {
   200: 10250000000,
 };
 
-module.exports = sehpValues;
+export default sehpValues;

@@ -1,11 +1,12 @@
-const { MessageFlags } = require("discord.js");
+import { MessageFlags } from "discord.js";
 
-module.exports = {
+export default {
   name: "interactionCreate",
   once: false,
 
   async execute(interaction, client) {
-    if (!interaction.isChatInputCommand() && !interaction.isAutocomplete()) return;
+    if (!interaction.isChatInputCommand() && !interaction.isAutocomplete())
+      return;
 
     const command = client.commands.get(interaction.commandName);
     if (!command) return;

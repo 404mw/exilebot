@@ -1,9 +1,16 @@
-module.exports = {
-    name: "komgen",
-    aliases: ["kongen"],
-    description: "Sends a Kim Jong Un GIF",
+export default {
+  name: "komgen",
+  aliases: ["kongen", "kogmen"],
+  description: "Sends a Kim Jong Un GIF",
 
-    execute(message) {
-        return message.reply("https://tenor.com/view/kim-jong-un-gif-6119244402377892028");
+  async execute(message) {
+    try {
+      await message.delete();
+      return message.channel.send(
+        "https://tenor.com/view/kim-jong-un-gif-6119244402377892028"
+      );
+    } catch (error) {
+      console.error("Failed to delete message or send GIF:", error);
     }
+  },
 };

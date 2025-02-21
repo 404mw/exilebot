@@ -1,11 +1,24 @@
-module.exports = {
-    name: "mw",
-    aliases: ["mwpi"],
-    description: "Sends a GIF",
+export default {
+  name: "mw",
+  aliases: ["mwpi", "m.w", "m.w."],
+  description: "Sends a GIF",
 
-    execute(message) {
-        if (message.author.username === `m.w.`) {
-            return message.reply(`https://tenor.com/view/cheeky-monkey-cheeky-baby-christmas-tree-baby-gif-24266151`)
-        } else return message.reply(`https://tenor.com/view/the-office-michael-scott-steve-carell-im-interested-im-listening-gif-1391849278728099340`);
+  async execute(message) {
+    const gifs = {
+      target:
+        "https://tenor.com/view/cheeky-monkey-cheeky-baby-christmas-tree-baby-gif-24266151",
+      default:
+        "https://tenor.com/view/the-office-michael-scott-steve-carell-im-interested-im-listening-gif-1391849278728099340",
+    };
+
+    const gifToSend =
+      message.author.username === "m.w." ? gifs.target : gifs.default;
+
+    try {
+      await message.delete();
+      await message.reply(gifToSend);
+    } catch (error) {
+      console.error("Error sending GIF:", error);
     }
+  },
 };
