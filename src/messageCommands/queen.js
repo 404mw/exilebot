@@ -4,7 +4,6 @@ export default {
 
   async execute(message) {
     try {
-      await message.delete();
       await message.channel.send(
         `https://tenor.com/view/spider-man-gif-21019143`
       );

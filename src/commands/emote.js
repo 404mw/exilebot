@@ -27,7 +27,6 @@ export default {
         .setDescription(`Emoji name here`)
         .setAutocomplete(true)
     ),
-
   async execute(interaction) {
     const emotName = interaction.options.getString("name");
     const emoteList = [
@@ -50,25 +49,27 @@ export default {
 
   async autocomplete(interaction) {
     const groupName = interaction.options.getString("group");
-    const focusedValue = interaction.options.getFocused()?.toLowerCase();
+    const focusedValue = interaction.options.getFocused();
 
-    if (!focusedValue) return interaction.respond([]);
-
-    const emoteGroups = {
-      peepo: emotePeepo,
-      panda: emotePanda,
-      cat: emoteCat,
-      others: emoteOthers,
-      all: [...emotePeepo, ...emotePanda, ...emoteCat, ...emoteOthers],
-    };
-
-    const filtered = emoteGroups[groupName] || emoteGroups.all;
+    let filtered;
+    if (groupName === `peepo`) {
+      filtered = emotePeepo;
+    } else if (groupName === `panda`) {
+      filtered = emotePanda;
+    } else if (groupName === `cat`) {
+      filtered = emoteCat;
+    } else if (groupName === `others`) {
+      filtered = emoteOthers;
+    } else {
+      filtered = [...emotePeepo, ...emotePanda, ...emoteCat, ...emoteOthers];
+    }
 
     const response = filtered
-      .filter((emote) => emote.name.toLowerCase().includes(focusedValue))
+      .filter((emote) =>
+        emote.name.toLowerCase().includes(focusedValue.toLowerCase())
+      )
       .slice(0, 25)
-      .map(({ name }) => ({ name, value: name }));
-
+      .map((emote) => ({ name: emote.name, value: emote.name }));
     interaction.respond(response);
   },
 };

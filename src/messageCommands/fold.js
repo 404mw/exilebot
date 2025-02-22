@@ -12,7 +12,6 @@ export default {
       "https://tenor.com/view/samsung-samsung-galaxy-samsung-galaxy-z-samsung-galaxy-z-fold-samsung-galaxy-z-fold4-gif-26471633",
     ];
     try {
-      await message.delete();
       await message.channel.send(gifs[Math.floor(Math.random() * gifs.length)]);
     } catch (error) {
       console.error("Failed to delete message or send GIF:", error);

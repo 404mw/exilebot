@@ -4,10 +4,9 @@ export default {
   description: "Sends Mapi's own GIF",
 
   async execute(message) {
-    const mapi = "./media/mapi.gif";
+    const gif = `./media/mapi.gif`;
     try {
-      await message.delete();
-      await message.message.send({ files: [mapi] });
+      await message.channel.send({ files: [gif] });
     } catch (error) {
       console.error("Failed to delete message or send GIF:", error);
     }

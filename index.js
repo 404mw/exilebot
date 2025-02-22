@@ -14,9 +14,9 @@ const client = new Client({
   ],
 });
 
-client.commands = new Map(); // Slash commands
-client.messageCommands = new Map(); // Prefix-based commands
-client.aliases = new Map(); // Aliases for prefix-based commands
+client.commands = new Map();
+client.messageCommands = new Map();
+client.aliases = new Map();
 
 const token = process.env.TOKEN;
 

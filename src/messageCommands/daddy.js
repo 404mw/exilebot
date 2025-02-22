@@ -5,7 +5,6 @@ export default {
 
   async execute(message) {
     try {
-      await message.delete();
       await message.channel.send(
         `https://tenor.com/view/blaze-it-shaggy-smoke-scooby-doo-gif-5354085`
       );

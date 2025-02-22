@@ -15,8 +15,7 @@ export default {
       message.author.username === "m.w." ? gifs.target : gifs.default;
 
     try {
-      await message.delete();
-      await message.reply(gifToSend);
+      await message.channel.send(gifToSend);
     } catch (error) {
       console.error("Error sending GIF:", error);
     }

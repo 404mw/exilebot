@@ -5,7 +5,6 @@ export default {
 
   async execute(message) {
     try {
-      await message.delete();
       return message.channel.send(
         "https://tenor.com/view/kim-jong-un-gif-6119244402377892028"
       );

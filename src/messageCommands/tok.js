@@ -5,7 +5,6 @@ export default {
 
   async execute(message) {
     try {
-      await message.delete();
       await message.channel.send(
         `https://tenor.com/view/family-guy-stewie-griffin-strippers-strip-girls-gif-4422950`
       );

@@ -10,7 +10,6 @@ export default {
       "https://tenor.com/view/search-yes-okey-magnifying-glass-gif-10889149",
     ];
     try {
-      await message.delete();
       await message.channel.send(gifs[Math.floor(Math.random() * gifs.length)]);
     } catch (error) {
       console.error("Failed to delete message or send GIF:", error);

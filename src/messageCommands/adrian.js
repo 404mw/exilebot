@@ -13,7 +13,6 @@ export default {
     ];
 
     try {
-      await message.delete();
       await message.channel.send(gifs[Math.floor(Math.random() * gifs.length)]);
     } catch (error) {
       console.error("Error deleting message or sending GIF:", error);
