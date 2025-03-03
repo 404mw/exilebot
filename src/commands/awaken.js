@@ -14,14 +14,15 @@ export default {
     ),
 
   async execute(interaction) {
-    const allowedChannelId = "1328069031118377103";
-    if (interaction.inGuild() && interaction.channelId !== allowedChannelId) {
+    
+    const allowedChannel = "bot-spam";
+    if (interaction.inGuild() && interaction.channel.name !== allowedChannel) {
       return interaction.reply({
-        content: "This command can only be used in #bot-spam channel.",
+        content: `This command can only be used in #${allowedChannel} channel.`,
         flags: MessageFlags.Ephemeral,
       });
     }
-
+    
     const pool = [
       {
         answer: "E-",
