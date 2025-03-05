@@ -7,7 +7,7 @@ export default {
       const sentTime = Date.now();
       const replyMessage = await message.reply("Pong! 🏓");
 
-      const responseTime = Date.now() - sentTime;
+      const responseTime = Math.round((Date.now() - sentTime) / 100);
       await replyMessage.edit(`Pong! 🏓 \n **${responseTime}ms**`);
     } catch (error) {
       console.error("Error in ping command:", error);
