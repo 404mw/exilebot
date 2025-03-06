@@ -1,6 +1,6 @@
 export default {
   name: "patar",
-  aliases: ["patat", "xpatar", "xpatat"],
+  aliases: ["patat", "xpatar", "xpatat", "patatar"],
   description: "Sends a random patrick GIF",
 
   async execute(message) {

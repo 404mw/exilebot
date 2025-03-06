@@ -27,6 +27,7 @@ export default {
     const input2 = interaction.options.getNumber("percentage");
 
     let bossEmoji;
+    let response = `**Note**: \`1-99\`<:hp:1325816948889747456> is inaccurate/old\n\n`;
 
     if (input1 < 101) {
       bossEmoji = `<:se2:1335306043529367602>`;
@@ -40,19 +41,17 @@ export default {
       if (predefinedValue >= 1e14) {
         predefinedValue = predefinedValue.toExponential(13);
       }
-      return interaction.reply(
-        `> **x${input1}** <:hp:1325816948889747456> at **100%**\n > \n > ${bossEmoji} **${predefinedValue}**`
-      );
+
+      response += `> **x${input1}** <:hp:1325816948889747456> at **100%**\n > \n > ${bossEmoji} **${predefinedValue}**`;
+    } else {
+      let result = (predefinedValue * input2) / 100;
+
+      if (result >= 1e14) {
+        result = result.toExponential(13);
+      }
+
+      response += `> **x${input1}** <:hp:1325816948889747456> at **${input2}%**\n > \n > ${bossEmoji} **${result}** remaining`;
     }
-
-    let result = (predefinedValue * input2) / 100;
-
-    if (result >= 1e14) {
-      result = result.toExponential(13);
-    }
-
-    return interaction.reply(
-      `> **x${input1}** <:hp:1325816948889747456> at **${input2}%**\n > \n > ${bossEmoji} **${result}** remaining`
-    );
+    return interaction.reply(response);
   },
 };
