@@ -1,4 +1,6 @@
 import { SlashCommandBuilder, MessageFlags } from "discord.js";
+import costs from "../utils/dtCost.js";
+import temple from "../utils/templeCost.js";
 
 export default {
   data: new SlashCommandBuilder()
@@ -11,42 +13,42 @@ export default {
         .setName(`origin`)
         .setDescription(`Provide Origin(DT-1) heroes here`)
         .setMinValue(1)
-        .setMaxValue(12)
+        .setMaxValue(16)
     )
     .addNumberOption((option) =>
       option
         .setName(`surge`)
         .setDescription(`Provide Surge(DT-2) heroes here`)
         .setMinValue(1)
-        .setMaxValue(12)
+        .setMaxValue(16)
     )
     .addNumberOption((option) =>
       option
         .setName(`chaos`)
         .setDescription(`Provide Chaos(DT-3) heroes here`)
         .setMinValue(1)
-        .setMaxValue(12)
+        .setMaxValue(16)
     )
     .addNumberOption((option) =>
       option
         .setName(`core`)
         .setDescription(`Provide Core(DT-4) heroes here`)
         .setMinValue(1)
-        .setMaxValue(12)
+        .setMaxValue(16)
     )
     .addNumberOption((option) =>
       option
         .setName(`polystar`)
         .setDescription(`Provide Polystar(DT-5) heroes here`)
         .setMinValue(1)
-        .setMaxValue(10)
+        .setMaxValue(16)
     )
     .addNumberOption((option) =>
       option
         .setName(`nirvana`)
         .setDescription(`Provide Nirvana(DT-6) heroes here`)
         .setMinValue(1)
-        .setMaxValue(8)
+        .setMaxValue(12)
     )
     .addNumberOption((option) =>
       option
@@ -69,7 +71,7 @@ export default {
         .setName(`goal_temple_level`)
         .setDescription(`Provide your Next Temple level here`)
         .setMinValue(1)
-        .setMaxValue(16)
+        .setMaxValue(22)
     ),
 
   async execute(interaction) {
@@ -77,63 +79,6 @@ export default {
     const bagSpirit = interaction.options.getNumber("bag_spirit");
     const inputTemple = interaction.options.getNumber("goal_temple_level");
 
-    const costs = [
-      {
-        name: "origin",
-        gem: 5,
-        spiritvein: 197236,
-        emoji: "<:origin:1332021165073367060>",
-      },
-      {
-        name: "surge",
-        gem: 12,
-        spiritvein: 277200,
-        emoji: "<:surge:1332021150586245140>",
-      },
-      {
-        name: "chaos",
-        gem: 21,
-        spiritvein: 356400,
-        emoji: "<:chaos:1332021096110755975>",
-      },
-      {
-        name: "core",
-        gem: 32,
-        spiritvein: 435600,
-        emoji: "<:core:1332021073977278544>",
-      },
-      {
-        name: "polystar",
-        gem: 45,
-        spiritvein: 514800,
-        emoji: "<:polystar:1332021054763303053>",
-      },
-      {
-        name: "nirvana",
-        gem: 60,
-        spiritvein: 619300,
-        emoji: "<:nirvana:1332021038044676096>",
-      },
-    ];
-
-    const temple = [
-      { level: 1, gem: 5, spiritvein: 197236 },
-      { level: 2, gem: 15, spiritvein: 591708 },
-      { level: 3, gem: 34, spiritvein: 948872 },
-      { level: 4, gem: 54, spiritvein: 990000 },
-      { level: 5, gem: 75, spiritvein: 1463672 },
-      { level: 6, gem: 98, spiritvein: 1702800 },
-      { level: 7, gem: 123, spiritvein: 2058436 },
-      { level: 8, gem: 151, spiritvein: 2098800 },
-      { level: 9, gem: 183, spiritvein: 2534400 },
-      { level: 10, gem: 217, spiritvein: 2970000 },
-      { level: 11, gem: 256, spiritvein: 3232900 },
-      { level: 12, gem: 312, spiritvein: 3826900 },
-      { level: 13, gem: 372, spiritvein: 4446200 },
-      { level: 14, gem: 443, spiritvein: 5144700 },
-      { level: 15, gem: 520, spiritvein: 6095100 },
-      { level: 16, gem: 612, spiritvein: 7150000 },
-    ];
     const emojis = {
       origin: `<:origin:1332021165073367060>`,
       surge: `<:surge:1332021150586245140>`,
