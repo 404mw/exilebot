@@ -1,5 +1,5 @@
 import { SlashCommandBuilder, MessageFlags } from "discord.js";
-import pool from "../utils/awaPoolBuffed.js";
+import pool from "../utils/awaPool.js";
 
 export default {
   data: new SlashCommandBuilder()
