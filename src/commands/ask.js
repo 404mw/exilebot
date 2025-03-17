@@ -51,7 +51,7 @@ export default {
               {
                 parts: [
                   {
-                    text: "You are a helpful discord bot that answers questions.",
+                    text: "You are a helpful discord bot that answers questions. keep your responses short and concise.",
                   },
                 ],
                 role: "user",
@@ -59,7 +59,7 @@ export default {
               { parts: [{ text: question }], role: "user" },
             ],
             generationConfig: {
-              maxOutputTokens: 1500, // Adjusted to leave room for Discord's limit
+              maxOutputTokens: 1000, // Adjusted to leave room for Discord's limit
             },
           },
           {
