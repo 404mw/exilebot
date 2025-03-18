@@ -6,7 +6,7 @@ dotenv.config();
 
 const geminiApiKey = process.env.GEMINI_API_KEY;
 const userCooldowns = new Collection();
-const ALLOWED_GUILD_ID = "1076157809281994842"; // Use a constant for guild ID
+const ALLOWED_GUILD_ID = "864172925070082068"; // Use a constant for guild ID
 
 export default {
   data: new SlashCommandBuilder()
@@ -29,7 +29,7 @@ export default {
     }
     
     // Rate Limiting
-    const cooldownTime = 6000; // 60 seconds cooldown
+    const cooldownTime = 60000; // 60 seconds cooldown
     if (userCooldowns.has(interaction.user.id)) {
       const expirationTime =
         userCooldowns.get(interaction.user.id) + cooldownTime;
