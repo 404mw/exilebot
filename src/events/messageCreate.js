@@ -9,9 +9,11 @@ export default {
       message.react(`<:ping:1326194149808144425>`);
     } else if (
       message.content.toLowerCase().includes(`morgen`) ||
-      message.content.toLowerCase().includes(`morning`)
+      message.content.toLowerCase().includes(`mornin`)
     ) {
       message.react(`<a:GM_Whale:1335633850923225098>`);
+    } else if (message.content.startsWith("<:confused:1348039085239046215>")) {
+      message.react(`<a:patpatat:1351641692515864677>`);
     }
   },
 };
