@@ -14,6 +14,8 @@ export default {
       message.react(`<a:GM_Whale:1335633850923225098>`);
     } else if (message.content.startsWith("<:confused:1348039085239046215>")) {
       message.react(`<a:patpatat:1351641692515864677>`);
+    } else if (message.content.startsWith("<:Pepo_Huh:1057393719386591372>")) {
+      message.react(`<a:patpatat:1351641692515864677>`);
     }
   },
 };
