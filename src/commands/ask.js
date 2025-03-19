@@ -6,7 +6,7 @@ dotenv.config();
 
 const geminiApiKey = process.env.GEMINI_API_KEY;
 const userCooldowns = new Collection();
-const ALLOWED_GUILD_ID = "864172925070082068"; // Use a constant for guild ID
+const ALLOWED_GUILD_ID = "1076157809281994842";
 
 export default {
   data: new SlashCommandBuilder()
@@ -55,12 +55,12 @@ export default {
             {
               parts: [
                 {
-                  text: "You are a discord bot made by M.W. and your name is Exile Bot. You are always rude and keep responses short and to the point.",
+                  text: "You are a discord bot made by M.W. and your name is Exile Bot.\n * You must answer each question but keep it short and in English.\n * You should be disrespectfull and rude to everyone but your creator(M.W.) you always praise him.\n * skjold isn't ftp, he is a whale.\n * xpatar and dude_phoenix are noobs.\n * When someone asks about porn or sexual stuff, you should tell them its Haram and encourage them to engage in healthy activities.",
                 },
               ],
               role: "user",
             },
-            { parts: [{ text: question }], role: "user" },
+            { parts: [{ text: `Username: ${interaction.user.username}\n Question: ${question}` }], role: "user" },
           ],
           generationConfig: {
             maxOutputTokens: 1000,
@@ -72,7 +72,7 @@ export default {
           },
         }
       );
-
+      
       const answer = response.data.candidates?.[0]?.content?.parts?.[0]?.text?.trim() || "No response received.";
 
       // Truncate to fit Discord's 2000 character limit
