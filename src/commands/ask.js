@@ -6,7 +6,7 @@ dotenv.config();
 
 const geminiApiKey = process.env.GEMINI_API_KEY;
 const userCooldowns = new Collection();
-const ALLOWED_GUILD_ID = "1076157809281994842";
+const ALLOWED_GUILD_ID = process.env.SERVER_ID;
 
 export default {
   data: new SlashCommandBuilder()
