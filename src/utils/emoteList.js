@@ -1,4 +1,12 @@
 const emotePeepo = [
+  { name: `Sad Fingertips`, emote: `<a:sadtips:1353428175589478420>` },
+  { name: `Lick Feets`, emote: `<a:lickfeet:1353427994043093073>` },
+  { name: `Spank Sis`, emote: `<a:spanksis:1353428094177771671>` },
+  { name: `Pat Confused`, emote: `<a:patpatat:1351641692515864677>` },
+  { name: `Wicked Dab`, emote: `<a:wickeddab:1353428555219992616>` },
+  { name: `Wicked Steer`, emote: `<a:wickedsteer:1353428517043441796>` },
+  { name: `Middle Finger Leave`, emote: `<a:fingerleave:1353428485552472124>` },
+  { name: `KMS Loading`, emote: `<a:kmsloading:1353428414069215232>` },
   { name: `Nodders from Left`, emote: `<a:nodders:1329891059299520512>` },
   { name: `Saddies / Cry`, emote: `<a:saddies:1329891073690173460>` },
   { name: `Rich Cash`, emote: `<a:peepo_richcash:1331281801121107988>` },
@@ -43,10 +51,18 @@ const emoteCat = [
   { name: `Cute Punch`, emote: `<a:cat_punch:1337839073624068258>` },
   { name: `No / Fuck off`, emote: `<a:cat_foff:1337839044624908290>` },
   { name: `Woah`, emote: `<a:cat_woah:1337839019803021453>` },
-  { name: `What`, emote: `<a:cat_what:1337839007320772628>` },
+  { name: `Ask Please`, emote: `<a:catask:1353430764250857612>` },
+  { name: `Headbonks Slaps`, emote: `<a:catheadbonks:1353430250683629668>` },
+  { name: `Scared Leave`, emote: `<a:scaredleave:1353428067972026410>` },
+  { name: `What you just said`, emote: `<a:whachusayin:1353428040859910195>` },
+  { name: `Cat Bleh`, emote: `<:catbleh:1353428018399547496>` },
 ];
 
 const emotePanda = [
+  { name: `Panda Bleh`, emote: `<:pandableh:1353428372344012880>` },
+  { name: `Angry Chainsaw`, emote: `<a:pandachainsaw:1353428338231742504>` },
+  { name: `Bless 1`, emote: `<:pandabless1:1353435987392462929>` },
+  { name: `Bless 2`, emote: `<:pandabless2:1353428122279874560>` },
   { name: `Fire`, emote: `<a:panda_fire:1337833115225161788>` },
   { name: `Shy Waving`, emote: `<a:shy_wave:1337833037056180286>` },
   { name: `Surprise Bop and Leave`, emote: `<a:bop_leave:1337833053518823477>` },
@@ -55,8 +71,11 @@ const emotePanda = [
 ]
 
 const emoteOthers = [
-  { name: `Bongo - Smash`, emote: `<a:bongosmash:1329891033605083167>` },
+  { name: `Slap Sis`, emote: `<a:slapsis:1353435962662850661>` },
+  { name: `Gamer Rage`, emote: `<a:gamerrage:1353428453944459394>` },
+  { name: `Stewie Spank`, emote: `<a:stewiespank:1353427972937220169>` },
   { name: `Hyper Yayy `, emote: `<a:yayyy:1337833130144436355>` },
+  { name: `Bongo - Smash`, emote: `<a:bongosmash:1329891033605083167>` },
   { name: `Patrick - Loser`, emote: `<a:patrick_loser:1337839386724929669>` },
 ]
 

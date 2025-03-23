@@ -16,7 +16,7 @@ export default {
         {
           name: "`/se`",
           value:
-            "> Calculates remaining HP of <:se2:1335306043529367602> Star Expedition boss",
+            "> Calculates remaining HP of <a:se2g:1349453030025859123> Star Expedition boss",
         },
         {
           name: "`/awaken`",
@@ -32,6 +32,11 @@ export default {
           name: "`/get_dt_mats`",
           value:
             "> - counts <:auroragem:1332031851048472627> and <:spiritvein:1333082447772123146> invested in your heroes, can also be used to determine the cost\n> - Also compares with the required amount for next temple upgrade",
+        },
+        {
+          name: "`/ask`",
+          value:
+            "> Frendo AI at your service, current persona is **__Captain Jack Sparrow__**",
         }
       )
       .setThumbnail(interaction.client.user.displayAvatarURL());

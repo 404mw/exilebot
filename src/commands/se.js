@@ -26,14 +26,8 @@ export default {
     const input1 = interaction.options.getNumber("hp");
     const input2 = interaction.options.getNumber("percentage");
 
-    let bossEmoji;
-    let response = `**Note**: \`1-99\`<:hp:1325816948889747456> is inaccurate/old\n\n`;
-
-    if (input1 < 101) {
-      bossEmoji = `<:se2:1335306043529367602>`;
-    } else if (input1 > 100) {
-      bossEmoji = `<:se1:1335306027356258428>`;
-    }
+    let bossEmoji = input1 <= 100 ? bossEmoji = `<a:se2g:1349453030025859123>` : `<a:se1g:1353437489708269628>`
+    let response = input1 <= 100 ? response = `**Note**: \`1-99\`<:hp:1325816948889747456> is inaccurate/outdated\n\n` : ""
 
     let predefinedValue = sehpValues[input1];
 
