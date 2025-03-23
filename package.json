@@ -1,14 +1,14 @@
 {
   "name": "exile.bot",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "author": "404mw",
+  "license": "MIT",
+  "description": "A discord bot that does certain tasks",
   "dependencies": {
     "axios": "^1.7.9",
     "discord.js": "^14.18.0",
