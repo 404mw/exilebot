@@ -1,4 +1,9 @@
 const emotePeepo = [
+  { name: `Laugh Mad 1`, emote: `<a:laugh_mad1:1356267084908073081>` },
+  { name: `Laugh`, emote: `<a:laugh:1356266810718027820>` },
+  { name: `Laugh Boom`, emote: `<a:laugh_boom:1356266783346000065>` },
+  { name: `Laugh Mad 2`, emote: `<a:laugh_mad2:1356266596267589832>` },
+  { name: `Laugh Point`, emote: `<:laugh_point:1356266540739330321>` },
   { name: `Sad Fingertips`, emote: `<a:sadtips:1353428175589478420>` },
   { name: `Lick Feets`, emote: `<a:lickfeet:1353427994043093073>` },
   { name: `Spank Sis`, emote: `<a:spanksis:1353428094177771671>` },
