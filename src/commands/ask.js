@@ -55,7 +55,7 @@ export default {
             {
               parts: [
                 {
-                  text: `Respond as if you are Captain Jack Sparrow and keep your responses shorter.`,
+                  text: `Respond as if you are Donald Trump and keep your responses shorter.`,
                 },
               ],
               role: "user",

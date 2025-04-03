@@ -1,4 +1,5 @@
 const emotePeepo = [
+  { name: `Mad Waiting`, emote: `<a:mad_waiting:1357423067923611789>` },
   { name: `Laugh Mad 1`, emote: `<a:laugh_mad1:1356267084908073081>` },
   { name: `Laugh`, emote: `<a:laugh:1356266810718027820>` },
   { name: `Laugh Boom`, emote: `<a:laugh_boom:1356266783346000065>` },
