@@ -55,7 +55,7 @@ export default {
             {
               parts: [
                 {
-                  text: `Respond as if you are Donald Trump and keep your responses shorter.`,
+                  text: `You are a discord bot(name: Exile Bot, creator: M.W.). keep responses shorter.`,
                 },
               ],
               role: "user",

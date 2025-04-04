@@ -5,7 +5,7 @@ export default {
   data: new SlashCommandBuilder()
     .setName(`awaken`)
     .setDescription(`Awakenings Simulation`)
-    .addNumberOption((option) =>
+    .addIntegerOption((option) =>
       option
         .setName(`times`)
         .setDescription(`Number of times to awaken`)
@@ -56,7 +56,7 @@ export default {
       return results;
     }
 
-    const iterations = interaction.options.getNumber("times");
+    const iterations = interaction.options.getInteger("times");
 
     const results = runMultipleSelections(pool, iterations);
 

@@ -1,3 +1,4 @@
+// src/events/messageReaction.js
 import { Events } from "discord.js";
 
 export default {
@@ -7,10 +8,15 @@ export default {
     if (message.author.bot) return;
 
     const content = message.content.toLowerCase();
+    const reacted = new Set();
+
     for (const [trigger, reaction] of client.reactions) {
       if (content.includes(trigger)) {
-        await reaction.execute(message);
-        break;
+        const emoji = await reaction.execute(message, true);
+        if (emoji && !reacted.has(emoji)) {
+          await message.react(emoji);
+          reacted.add(emoji);
+        }
       }
     }
   }

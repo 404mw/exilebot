@@ -120,10 +120,17 @@ const pool = [
   },
   {
     answer: "SSS",
-    probability: 0.000004,
+    probability: 0.0000039995,
     emoji: "<:awakensss:1329829693968613428>",
     retire: 200000,
     points: 20,
+  },
+  {
+    answer: "X",
+    probability: 0.0000000005,
+    emoji: "<:awakenx:1357751768536191057>",
+    retire: 300000,
+    points: 21,
   },
 ];
 

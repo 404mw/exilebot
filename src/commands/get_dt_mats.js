@@ -8,76 +8,76 @@ export default {
     .setDescription(
       `Counts Destiny mats and calculates the required amount for next temple upgrade`
     )
-    .addNumberOption((option) =>
+    .addIntegerOption((option) =>
       option
         .setName(`origin`)
-        .setDescription(`Provide Origin(DT-1) heroes here`)
+        .setDescription(`Provide Origin(D1) heroes here (limit 1-16)`)
         .setMinValue(1)
         .setMaxValue(16)
     )
-    .addNumberOption((option) =>
+    .addIntegerOption((option) =>
       option
         .setName(`surge`)
-        .setDescription(`Provide Surge(DT-2) heroes here`)
+        .setDescription(`Provide Surge(D2) heroes here (limit 1-16)`)
         .setMinValue(1)
         .setMaxValue(16)
     )
-    .addNumberOption((option) =>
+    .addIntegerOption((option) =>
       option
         .setName(`chaos`)
-        .setDescription(`Provide Chaos(DT-3) heroes here`)
+        .setDescription(`Provide Chaos(D3) heroes here (limit 1-16)`)
         .setMinValue(1)
         .setMaxValue(16)
     )
-    .addNumberOption((option) =>
+    .addIntegerOption((option) =>
       option
         .setName(`core`)
-        .setDescription(`Provide Core(DT-4) heroes here`)
+        .setDescription(`Provide Core(D4) heroes here (limit 1-16)`)
         .setMinValue(1)
         .setMaxValue(16)
     )
-    .addNumberOption((option) =>
+    .addIntegerOption((option) =>
       option
         .setName(`polystar`)
-        .setDescription(`Provide Polystar(DT-5) heroes here`)
+        .setDescription(`Provide Polystar(D5) heroes here (limit 1-16)`)
         .setMinValue(1)
         .setMaxValue(16)
     )
-    .addNumberOption((option) =>
+    .addIntegerOption((option) =>
       option
         .setName(`nirvana`)
-        .setDescription(`Provide Nirvana(DT-6) heroes here`)
+        .setDescription(`Provide Nirvana(D6) heroes here (limit 1-12)`)
         .setMinValue(1)
         .setMaxValue(12)
     )
-    .addNumberOption((option) =>
+    .addIntegerOption((option) =>
       option
         .setName(`bag_aurora`)
-        .setDescription(`Provide Aurora Gems in Bag here`)
+        .setDescription(`Provide Aurora Gems in Bag here (1-100)`)
         .setMinValue(1)
         .setMaxValue(100)
     )
-    .addNumberOption((option) =>
+    .addIntegerOption((option) =>
       option
         .setName(`bag_spirit`)
         .setDescription(
-          `Provide Scattered Spiritvein Shards in bag here, type 100000 for 100k`
+          `Provide Scattered Spiritvein Shards in bag here, type 100000 for 100k (max 999999)`
         )
         .setMinValue(1)
         .setMaxValue(999999)
     )
-    .addNumberOption((option) =>
+    .addIntegerOption((option) =>
       option
         .setName(`goal_temple_level`)
-        .setDescription(`Provide your Next Temple level here`)
+        .setDescription(`Provide your Next Temple level here (1-22)`)
         .setMinValue(1)
         .setMaxValue(22)
     ),
 
   async execute(interaction) {
-    const bagGems = interaction.options.getNumber("bag_aurora");
-    const bagSpirit = interaction.options.getNumber("bag_spirit");
-    const inputTemple = interaction.options.getNumber("goal_temple_level");
+    const bagGems = interaction.options.getInteger("bag_aurora");
+    const bagSpirit = interaction.options.getInteger("bag_spirit");
+    const inputTemple = interaction.options.getInteger("goal_temple_level");
 
     const emojis = {
       origin: `<:origin:1332021165073367060>`,
@@ -97,7 +97,7 @@ export default {
     let hasInput = false;
 
     for (const { name, gem, spiritvein, emoji } of costs) {
-      const userInput = interaction.options.getNumber(name);
+      const userInput = interaction.options.getInteger(name);
       if (userInput !== null) {
         hasInput = true;
         const resultGem = userInput * gem;

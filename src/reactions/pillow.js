@@ -1,8 +1,8 @@
 export default {
-  triggers: ["morgen", "morning", "morns", "orgen", "orning"],
+  triggers: ["chef", "pillow"],
 
   async execute(message, returnOnly = false) {
-    const emoji = "<a:GM_Whale:1335633850923225098>";
+    const emoji = "<:ppchef:1357751794624757892>";
     if (returnOnly) return emoji;
     await message.react(emoji);
     return emoji;

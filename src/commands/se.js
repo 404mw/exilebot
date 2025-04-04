@@ -5,26 +5,26 @@ export default {
   data: new SlashCommandBuilder()
     .setName(`se`)
     .setDescription(`Calculates Remaining HP of Star Expedition boss for you`)
-    .addNumberOption((option) =>
+    .addIntegerOption((option) =>
       option
         .setName(`hp`)
-        .setDescription(`Provide the current HP bar here`)
+        .setDescription(`Provide the current HP bar here (1-200)`)
         .setRequired(true)
         .setMinValue(1)
         .setMaxValue(200)
     )
-    .addNumberOption((option) =>
+    .addIntegerOption((option) =>
       option
         .setName(`percentage`)
-        .setDescription(`Provide the remaining % here`)
+        .setDescription(`Provide the remaining % here (1-100)`)
         .setRequired(false)
         .setMinValue(1)
         .setMaxValue(100)
     ),
 
   async execute(interaction) {
-    const input1 = interaction.options.getNumber("hp");
-    const input2 = interaction.options.getNumber("percentage");
+    const input1 = interaction.options.getInteger("hp");
+    const input2 = interaction.options.getInteger("percentage");
 
     let bossEmoji;
     let response;
