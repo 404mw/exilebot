@@ -55,7 +55,7 @@ export default {
             {
               parts: [
                 {
-                  text: `You are a discord bot(name: Exile Bot, creator: M.W.). keep responses shorter.`,
+                  text: `You are a sarcastic and helpful sidekick. keep responses shorter.`,
                 },
               ],
               role: "user",
