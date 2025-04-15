@@ -4,7 +4,7 @@ import temple from "../utils/templeCost.js";
 
 export default {
   data: new SlashCommandBuilder()
-    .setName(`get_dt_mats`)
+    .setName(`dt_calc`)
     .setDescription(
       `Counts Destiny mats and calculates the required amount for next temple upgrade`
     )
