@@ -22,7 +22,6 @@ export default {
         .setDescription("Duration of the giveaway")
         .setRequired(true)
         .addChoices(
-          { name: "15 secs", value: "15sec" },
           { name: "1 hour", value: "1hr" },
           { name: "12 hours", value: "12hr" },
           { name: "24 hours", value: "24hr" }
@@ -41,6 +40,12 @@ export default {
         .setRequired(true)
         .setMinValue(1)
         .setMaxValue(3)
+    )
+    .addBooleanOption((option) =>
+      option
+        .setName("mention")
+        .setDescription("Allow me to mention @everyone or not")
+        .setRequired(true)
     )
     .setDefaultMemberPermissions(null),
 
@@ -71,9 +76,9 @@ export default {
     const durationChoice = interaction.options.getString("duration");
     const host = interaction.options.getUser("host");
     const winnersCount = interaction.options.getInteger("winners");
+    const mention = interaction.options.getBoolean("mention");
 
     const durationMap = {
-      "15sec": 15,
       "1hr": 3600,
       "12hr": 43200,
       "24hr": 86400,
@@ -90,8 +95,9 @@ export default {
       )
       .setDescription(
         `**${item}**<:SGs:1377004656168796311> up for grabs!\n
+          React with <:gopnik:1325482731551068170> to enter!\n
           Hosted by: <@${host.id}>\n
-          Expected Winners: **${winnersCount}**\n
+          Winners: **${winnersCount}**\n
           Ends in: <t:${Math.floor(endsAt / 1000)}:R>`
       )
       .setColor(0x588543)
@@ -102,7 +108,7 @@ export default {
       );
 
     const message = await channel.send({
-      content: "@everyone",
+      content: mention ? "@everyone" : "",
       embeds: [embed],
       allowedMentions: { parse: ["everyone"] },
     });
