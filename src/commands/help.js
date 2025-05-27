@@ -36,7 +36,12 @@ export default {
         {
           name: "`/ask`",
           value:
-            "> Frendo AI at your service, current persona is **__Captain Jack Sparrow__**",
+            "> Frendo AI at your service, ask anything and get a quick response in chat",
+        },
+        {
+          name: "`/ask`",
+          value:
+            "> Starts a giveaway with a custom title, duration, number of winners, and host. Only moderators can use it. Participants react with <:gopnik:1325482731551068170> to enter, and winners are chosen randomly when time is up.",
         }
       )
       .setThumbnail(interaction.client.user.displayAvatarURL());
