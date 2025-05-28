@@ -9,12 +9,11 @@ export default {
   data: new SlashCommandBuilder()
     .setName("giveaway")
     .setDescription("Start a giveaway")
-    .addIntegerOption((option) =>
+    .addStringOption((option) =>
       option
         .setName("prize")
         .setDescription("Prize and title of the giveaway")
         .setRequired(true)
-        .setMinValue(1)
     )
     .addStringOption((option) =>
       option
@@ -47,6 +46,13 @@ export default {
         .setDescription("Allow me to mention @everyone or not")
         .setRequired(true)
     )
+    .addStringOption((option) =>
+      option
+        .setName("message")
+        .setDescription("Custom message to display")
+        .setRequired(false)
+        .setMaxLength(200)
+  )
     .setDefaultMemberPermissions(null),
 
   async execute(interaction) {
@@ -72,11 +78,12 @@ export default {
       });
     }
 
-    const item = interaction.options.getInteger("prize");
+    const item = interaction.options.getString("prize");
     const durationChoice = interaction.options.getString("duration");
     const host = interaction.options.getUser("host");
     const winnersCount = interaction.options.getInteger("winners");
     const mention = interaction.options.getBoolean("mention");
+    const customMessage = interaction.options.getString("message");
 
     const durationMap = {
       "1hr": 3600,
@@ -91,29 +98,29 @@ export default {
 
     const embed = new EmbedBuilder()
       .setTitle(
-        `<a:peepo_partyhat:1377007874777157632> A new giveaway is happening in Exile <a:peepo_partyhat:1377007874777157632>`
+        `<a:peepo_partyhat:1377007874777157632> A new giveaway in Exile <a:peepo_partyhat:1377007874777157632>`
       )
       .setDescription(
-        `**${item}**<:SGs:1377004656168796311> up for grabs!\n
-          React with <:gopnik:1325482731551068170> to enter!\n
-          Hosted by: <@${host.id}>\n
-          Winners: **${winnersCount}**\n
-          Ends in: <t:${Math.floor(endsAt / 1000)}:R>`
+        `**${item}** up for grabs!\n\n` +
+        `React with 🎉 to enter!\n\n` +
+        `Hosted by: <@${host.id}>\n` +
+        `Winners: **${winnersCount}**\n` +
+        `Ends in: <t:${Math.floor(endsAt / 1000)}:R>`
       )
       .setColor(0x588543)
       .setFooter({ text: `Hosted by ${host.tag}` })
       .setTimestamp()
       .setThumbnail(
-        "https://cdn.discordapp.com/emojis/1338162896278126633.png"
+        "https://cdn.discordapp.com/emojis/1264891543408476231.png"
       );
 
     const message = await channel.send({
-      content: mention ? "@everyone" : "",
+      content: `${mention ? "@everyone" : ""}\n${customMessage || ""}`,
       embeds: [embed],
       allowedMentions: { parse: ["everyone"] },
     });
 
-    await message.react("<:gopnik:1325482731551068170>");
+    await message.react("🎉");
     client.activeGiveaway = true;
 
     await interaction.reply({
@@ -122,9 +129,19 @@ export default {
     });
 
     setTimeout(async () => {
+      console.log("[GIVEAWAY] Timer triggered. Fetching message...");
+
       try {
         const updatedMessage = await channel.messages.fetch(message.id);
-        const reaction = updatedMessage.reactions.cache.get("<:gopnik:1325482731551068170>");
+        await updatedMessage.fetch(); // Force full fetch in case of stale state
+
+        const reaction = updatedMessage.reactions.cache.get("🎉");
+
+        if (!reaction) {
+          console.log("[GIVEAWAY] No 🎉 reaction found even after .fetch().");
+          return;
+        }
+
         const users = (await reaction.users.fetch()).filter((u) => !u.bot);
         const userArray = Array.from(users.values());
 
@@ -134,17 +151,16 @@ export default {
 
         const resultEmbed = EmbedBuilder.from(embed).setDescription(
           `**${item}** giveaway ended!\n` +
-            `Hosted by: <@${host.id}>\n` +
-            `🎯 Winners: <a:blob_party:1377007853377814809>${
-              winners.map((u) => `<@${u.id}>`).join(", ") || "No valid entries"
-            }\n` +
-            `⏰ Ended!`
+          `Hosted by: <@${host.id}>\n` +
+          `🎯 Winners: <a:blob_party:1377007853377814809>${
+            winners.map((u) => `<@${u.id}>`).join(", ") || "No valid entries"
+          }\n` +
+          `⏰ Ended!`
         );
 
         await updatedMessage.edit({
-          content: "@everyone",
+          content: "Giveaway ended!",
           embeds: [resultEmbed],
-          allowedMentions: { parse: ["everyone"] },
         });
 
         if (winners.length > 0) {
@@ -158,7 +174,7 @@ export default {
           await channel.send(`<:sadgeplant:1377008454526566665> No valid entries, no winner for **${item}**.`);
         }
       } catch (error) {
-        console.error("Error ending giveaway:", error);
+        console.error("[GIVEAWAY] Error ending giveaway:", error);
       } finally {
         client.activeGiveaway = false;
       }
