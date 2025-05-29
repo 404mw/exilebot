@@ -15,8 +15,10 @@ export default {
     ),
 
   async execute(interaction) {
+    const config = interaction.client.config;
     
-    const allowedChannel = "bot-spam";
+    // Check if command is restricted to specific channels
+    const allowedChannel = config.allowedChannels.awaken;
     if (interaction.inGuild() && interaction.channel.name !== allowedChannel) {
       return interaction.reply({
         content: `This command can only be used in #${allowedChannel} channel.`,

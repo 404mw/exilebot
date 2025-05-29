@@ -39,7 +39,7 @@ export default {
             "> Frendo AI at your service, ask anything and get a quick response in chat",
         },
         {
-          name: "`/ask`",
+          name: "`/giveaway`",
           value:
             "> Starts a giveaway with a custom title, duration, number of winners, and host. Only moderators can use it. Participants react with <:gopnik:1325482731551068170> to enter, and winners are chosen randomly when time is up.",
         }

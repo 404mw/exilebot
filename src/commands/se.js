@@ -25,12 +25,16 @@ export default {
   async execute(interaction) {
     const input1 = interaction.options.getInteger("hp");
     const input2 = interaction.options.getInteger("percentage");
-
+    const config = interaction.client.config;
+    
+    // Get emojis from config
+    const hpEmoji = config.emojis.hp;
     let bossEmoji;
     let response;
 
-    bossEmoji = input1 <= 100 ? bossEmoji = `<a:se2g:1349453030025859123>` : `<a:se1g:1353437489708269628>`
-    response = input1 < 100 ? response = `**Note**: \`1-99\`<:hp:1325816948889747456> is inaccurate/outdated\n\n` : ""
+    // Determine which boss emoji to use based on HP level
+    bossEmoji = input1 <= 100 ? config.emojis.se2g : config.emojis.se1g;
+    response = input1 < 100 ? `**Note**: \`1-99\`${hpEmoji} is inaccurate/outdated\n\n` : "";
 
     let predefinedValue = sehpValues[input1];
 
@@ -39,7 +43,7 @@ export default {
         predefinedValue = predefinedValue.toExponential(13);
       }
 
-      response += `> **x${input1}** <:hp:1325816948889747456> at **100%**\n > \n > ${bossEmoji} **${predefinedValue}**`;
+      response += `> **x${input1}** ${hpEmoji} at **100%**\n > \n > ${bossEmoji} **${predefinedValue}**`;
     } else {
       let result = (predefinedValue * input2) / 100;
 
@@ -47,7 +51,7 @@ export default {
         result = result.toExponential(13);
       }
 
-      response += `> **x${input1}** <:hp:1325816948889747456> at **${input2}%**\n > \n > ${bossEmoji} **${result}** remaining`;
+      response += `> **x${input1}** ${hpEmoji} at **${input2}%**\n > \n > ${bossEmoji} **${result}** remaining`;
     }
     return interaction.reply(response);
   },

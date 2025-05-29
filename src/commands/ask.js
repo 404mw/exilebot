@@ -1,12 +1,8 @@
 import { SlashCommandBuilder, Collection, MessageFlags } from "discord.js";
 import axios from "axios";
-import * as dotenv from "dotenv";
 
-dotenv.config();
-
-const geminiApiKey = process.env.GEMINI_API_KEY;
+// Use shared cooldown collection
 const userCooldowns = new Collection();
-const ALLOWED_GUILD_ID = process.env.SERVER_ID;
 
 export default {
   data: new SlashCommandBuilder()
@@ -20,16 +16,18 @@ export default {
     ),
   async execute(interaction) {
     const question = interaction.options.getString("question");
+    const config = interaction.client.config;
 
-    if (interaction.guild.id !== ALLOWED_GUILD_ID) {
+    // Check if command is allowed in this server
+    if (interaction.guild.id !== process.env.SERVER_ID) {
       return interaction.reply({
         content: "This command is not accessible in this server.",
         flags: MessageFlags.Ephemeral,
       });
     }
     
-    // Rate Limiting
-    const cooldownTime = 60000; // 60 seconds cooldown
+    // Rate Limiting using config
+    const cooldownTime = config.cooldowns.ask;
     if (userCooldowns.has(interaction.user.id)) {
       const expirationTime =
         userCooldowns.get(interaction.user.id) + cooldownTime;
@@ -49,7 +47,7 @@ export default {
 
     try {
       const response = await axios.post(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=${geminiApiKey}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=${process.env.GEMINI_API_KEY}`,
         {
           contents: [
             {

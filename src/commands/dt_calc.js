@@ -79,17 +79,8 @@ export default {
     const bagSpirit = interaction.options.getInteger("bag_spirit");
     const inputTemple = interaction.options.getInteger("goal_temple_level");
 
-    const emojis = {
-      origin: `<:origin:1332021165073367060>`,
-      surge: `<:surge:1332021150586245140>`,
-      chaos: `<:chaos:1332021096110755975>`,
-      core: `<:core:1332021073977278544>`,
-      polystar: `<:polystar:1332021054763303053>`,
-      nirvana: `<:nirvana:1332021038044676096>`,
-      gem: `<:auroragem:1332031851048472627>`,
-      spiritvein: `<:spiritvein:1333082447772123146>`,
-      bag: `<:bag:1333083225244827698>`,
-    };
+    // Get emojis from config
+    const emojis = interaction.client.config.emojis;
 
     let reply = "";
     let totalGem = 0;
