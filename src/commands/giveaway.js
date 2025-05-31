@@ -263,7 +263,7 @@ export default {
 
     const duration = durationMap[durationChoice];
     const endsAt = Date.now() + duration * 1000;
-    const giveawayChannelId = "1076157810003431528";
+    const giveawayChannelId = "1376982644939821229";
     const channel = await client.channels.fetch(giveawayChannelId);
 
     const embed = new EmbedBuilder()
@@ -288,7 +288,7 @@ export default {
     const buttons = new ActionRowBuilder().addComponents(
       new ButtonBuilder()
         .setCustomId(`giveaway_end`)
-        .setLabel("Skip the timer now")
+        .setLabel("Announce winner now")
         .setStyle(ButtonStyle.Danger)
         .setEmoji("⏱️")
     );
