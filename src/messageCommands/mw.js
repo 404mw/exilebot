@@ -8,7 +8,7 @@ export default {
       target:
         "https://tenor.com/view/cheeky-monkey-cheeky-baby-christmas-tree-baby-gif-24266151",
       default:
-        "https://tenor.com/view/the-office-michael-scott-steve-carell-im-interested-im-listening-gif-1391849278728099340",
+        "https://tenor.com/view/rickroll-roll-rick-never-gonna-give-you-up-never-gonna-gif-22954713",
     };
 
     const gifToSend =

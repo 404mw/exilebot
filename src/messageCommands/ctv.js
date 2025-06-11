@@ -3,11 +3,17 @@ export default {
   description: "Sends CTV's desired GIF",
 
   async execute(message) {
-    const gif = `./media/ctv.gif`;
+    const ctv = [
+      `./media/ctv.gif`,
+      `./media/ctv2.gif`
+    ];
+
+    const gif = ctv[Math.floor(Math.random() * ctv.length)];
+
     try {
       await message.channel.send({ files: [gif] });
     } catch (error) {
-      console.error("Failed to delete message or send GIF:", error);
+      console.error("Failed to send GIF:", error);
     }
   },
 };
