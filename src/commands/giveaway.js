@@ -191,9 +191,11 @@ export default {
         .setDescription("Duration of the giveaway")
         .setRequired(true)
         .addChoices(
-          { name: "1 hour", value: "1hr" },
           { name: "12 hours", value: "12hr" },
-          { name: "24 hours", value: "24hr" }
+          { name: "1 Day", value: "1day" },
+          { name: "2 Days", value: "2days" },
+          { name: "3 Days", value: "3days" },
+          { name: "7 Days", value: "7days" },
         )
     )
     .addUserOption((option) =>
@@ -240,6 +242,17 @@ export default {
     }
 
     const client = interaction.client;
+    const channelName = "giveaway"
+
+    const channel = client.channels.cache.find(
+      (ch) => ch.name === channelName && ch.isTextBased()
+    );
+    if (!channel) {
+      return interaction.reply({
+        content: `Channel not found.\nCreate a text channel \`${channelName}\` and try again`,
+        flags: MessageFlags.Ephemeral,
+      });
+    }
 
     if (client.activeGiveaway) {
       return interaction.reply({
@@ -256,15 +269,15 @@ export default {
     const customMessage = interaction.options.getString("message");
 
     const durationMap = {
-      "1hr": 3600,
       "12hr": 43200,
-      "24hr": 86400,
+      "1day": 86400,
+      "2days": 172800,
+      "3days": 259200,
+      "7days": 604800,
     };
 
     const duration = durationMap[durationChoice];
     const endsAt = Date.now() + duration * 1000;
-    const giveawayChannelId = "1376982644939821229";
-    const channel = await client.channels.fetch(giveawayChannelId);
 
     const embed = new EmbedBuilder()
       .setTitle(
