@@ -1,6 +1,6 @@
 export default {
   name: "adrian",
-  aliases: ["skjold"],
+  aliases: ["skjold", "whale"],
   description: "Sends a random whale GIF",
 
   async execute(message) {
