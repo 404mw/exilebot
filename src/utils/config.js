@@ -52,7 +52,8 @@ export default {
   // This is just for reference
   requiredEnvVars: [
     'TOKEN',
-    'GEMINI_API_KEY',
+    'OPENAI_API_KEY',
+    'OPENAI_MODEL',
     'SERVER_ID'
   ]
 };
